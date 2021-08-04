@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const ErrorComponent = ({ errorMessage }) => {
   return (
@@ -8,4 +9,8 @@ export const ErrorComponent = ({ errorMessage }) => {
       <NavLink to='/'>Home</NavLink>
     </>
   );
+};
+
+ErrorComponent.propTypes = {
+  errorMessage: PropTypes.string.isRequired
 };

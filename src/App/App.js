@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Main } from '../Main/Main';
 import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 import { Favorites } from '../Favorites/Favorites';
+import PropTypes from 'prop-types';
 
 export const App = () => {
   const [loading, setLoading] = useState(true);
