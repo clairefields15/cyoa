@@ -1,10 +1,17 @@
-import React from 'react' 
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { Main } from '../Main/Main';
+import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 
-const App = () => {
-
+export const App = () => {
   return (
-    <h1>Hi</h1>
-  )
-}
-
-export default App
+    <Switch>
+      <Route exact path='/' render={() => <Main />} />
+      <Route
+        render={() => (
+          <ErrorComponent errorMessage="Sorry that page doesn't exist, would you like to go home?" />
+        )}
+      />
+    </Switch>
+  );
+};
