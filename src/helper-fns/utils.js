@@ -1,8 +1,16 @@
 export const checkForErrors = response => {
-  if (!response.ok) {
-    throw new Error(response.status);
-  } else {
+  if (response.status === 404) {
+    throw new Error(
+      "Sorry, we're having trouble finding any cities for you. Check back later"
+    );
+  } else if (response.status === 500) {
+    throw new Error(
+      "So sorry, our servers are down, you'll have to dream another day"
+    );
+  } else if (response.ok) {
     return response.json();
+  } else {
+    throw new Error('Something went wrong');
   }
 };
 

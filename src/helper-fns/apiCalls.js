@@ -1,4 +1,4 @@
-import { checkForErrors, cleanScores, cleanDetails } from './utils';
+import { checkForErrors, cleanScores } from './utils';
 
 export const fetchAllCities = async () => {
   let baseURL = 'https://api.teleport.org/api/urban_areas/';

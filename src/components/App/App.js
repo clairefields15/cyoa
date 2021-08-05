@@ -5,6 +5,7 @@ import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 import { Favorites } from '../Favorites/Favorites';
 import { ScrollToTop } from '../../helper-fns/ScrollToTop';
 import { fetchAllCities, fetchCity } from '../../helper-fns/apiCalls';
+import { Logo } from '../Logo/Logo';
 import './App.css';
 
 export const App = () => {
@@ -53,28 +54,33 @@ export const App = () => {
   return (
     <>
       <ScrollToTop />
-      <Switch>
-        <Route
-          exact
-          path='/'
-          render={() => (
-            <Main
-              cityName={cityName}
-              cityDetails={cityDetails}
-              cityImage={cityImage}
-              isLoading={isLoading}
-            />
-          )}
-        />
+      <Logo />
 
-        <Route exact path='/favorites' render={() => <Favorites />} />
+      {!!errorMessage && <ErrorComponent errorMessage={errorMessage} />}
+      {!errorMessage && (
+        <Switch>
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <Main
+                cityName={cityName}
+                cityDetails={cityDetails}
+                cityImage={cityImage}
+                isLoading={isLoading}
+              />
+            )}
+          />
 
-        <Route
-          render={() => (
-            <ErrorComponent errorMessage="Sorry that page doesn't exist, would you like to go home?" />
-          )}
-        />
-      </Switch>
+          <Route exact path='/favorites' render={() => <Favorites />} />
+
+          <Route
+            render={() => (
+              <ErrorComponent errorMessage="Sorry that page doesn't exist, would you like to go home?" />
+            )}
+          />
+        </Switch>
+      )}
     </>
   );
 };
