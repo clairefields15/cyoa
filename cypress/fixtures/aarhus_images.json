@@ -1,0 +1,33 @@
+{
+  "_links": {
+    "curies": [
+      {
+        "href": "https://developers.teleport.org/api/resources/Admin1Division/#!/relations/{rel}/",
+        "name": "a1",
+        "templated": true
+      },
+      {
+        "href": "https://developers.teleport.org/api/resources/Timezone/#!/relations/{rel}/",
+        "name": "tz",
+        "templated": true
+      }
+    ],
+    "self": {
+      "href": "https://api.teleport.org/api/urban_areas/slug:aarhus/images/"
+    }
+  },
+  "photos": [
+    {
+      "attribution": {
+        "license": "Attribution 2.0 Generic (CC BY 2.0)",
+        "photographer": "Calvin Smith",
+        "site": "Flickr",
+        "source": "https://www.flickr.com/photos/calvinsmith/8017326293/"
+      },
+      "image": {
+        "mobile": "https://d13k13wj6adfdf.cloudfront.net/urban_areas/aarhus-67c2f42848.jpg",
+        "web": "https://d13k13wj6adfdf.cloudfront.net/urban_areas/aarhus_web-1462c370b8.jpg"
+      }
+    }
+  ]
+}

@@ -4,11 +4,12 @@ import { Logo } from '../Logo/Logo';
 import { CityImage } from '../CityImage/CityImage';
 import './Main.css';
 
-export const Main = ({ cityName, cityDetails, cityImage }) => {
+export const Main = ({ cityName, cityDetails, cityImage, isLoading }) => {
   return (
     <main>
       <Logo />
-      <CityImage cityImage={cityImage} cityName={cityName} />
+      {isLoading && <h2 className='loading-msg'>Loading...</h2>}
+      {!isLoading && <CityImage cityImage={cityImage} cityName={cityName} />}
     </main>
   );
 };
@@ -16,5 +17,6 @@ export const Main = ({ cityName, cityDetails, cityImage }) => {
 Main.propTypes = {
   cityName: PropTypes.string.isRequired,
   cityDetails: PropTypes.object.isRequired,
-  cityImage: PropTypes.object.isRequired
+  cityImage: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };

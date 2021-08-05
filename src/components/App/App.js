@@ -12,7 +12,7 @@ export const App = () => {
   const [cityName, setCityName] = useState('');
   const [cityDetails, setCityDetails] = useState({});
   const [cityImage, setCityImage] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
@@ -25,7 +25,6 @@ export const App = () => {
       } catch (error) {
         setErrorMessage(error.message);
       }
-      setIsLoading(false);
     };
 
     fetchCities();
@@ -33,7 +32,6 @@ export const App = () => {
 
   useEffect(() => {
     const fetchDetails = async () => {
-      setIsLoading(true);
       setErrorMessage('');
       try {
         let randomCity =
@@ -42,10 +40,11 @@ export const App = () => {
         let cityDetails = await fetchCity(randomCity.href);
         setCityDetails(cityDetails[0]);
         setCityImage(cityDetails[1]);
+        setIsLoading(false);
       } catch (error) {
         setErrorMessage(error.message);
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
 
     fetchDetails();
@@ -63,6 +62,7 @@ export const App = () => {
               cityName={cityName}
               cityDetails={cityDetails}
               cityImage={cityImage}
+              isLoading={isLoading}
             />
           )}
         />

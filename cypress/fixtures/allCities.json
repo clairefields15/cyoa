@@ -1,3 +1,28 @@
 {
-  "":
+  "_links": {
+    "curies": [
+      {
+        "href": "https://developers.teleport.org/api/resources/Location/#!/relations/{rel}/",
+        "name": "location",
+        "templated": true
+      }
+    ],
+    "self": {
+      "href": "https://api.teleport.org/api/urban_areas/"
+    },
+    "ua:item": [
+      {
+        "href": "https://api.teleport.org/api/urban_areas/slug:aarhus/",
+        "name": "Aarhus"
+      },
+      {
+        "href": "https://api.teleport.org/api/urban_areas/slug:adelaide/",
+        "name": "Adelaide"
+      },
+      {
+        "href": "https://api.teleport.org/api/urban_areas/slug:albuquerque/",
+        "name": "Albuquerque"
+      }
+    ]
+  }
 }
