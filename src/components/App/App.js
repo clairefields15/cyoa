@@ -4,11 +4,14 @@ import { Main } from '../Main/Main';
 import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 import { Favorites } from '../Favorites/Favorites';
 import { ScrollToTop } from '../../helper-fns/ScrollToTop';
+import { fetchAllCities } from '../../helper-fns/apiCalls';
 
 export const App = () => {
   const [allCities, setAllCities] = useState([]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fetchAllCities().then(data => setAllCities(data));
+  }, []);
 
   return (
     <Switch>
