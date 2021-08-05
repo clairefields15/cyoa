@@ -1,5 +1,6 @@
 import React from 'react';
+import { Logo } from '../Logo/Logo';
 
 export const Main = () => {
-  return <h1>Hi</h1>;
+  return <Logo />;
 };
