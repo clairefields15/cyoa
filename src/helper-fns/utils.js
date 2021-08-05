@@ -6,16 +6,17 @@ export const checkForErrors = response => {
   }
 };
 
-export const cleanNameData = data => {
-  let arrayOfNames = data['_embedded']['city:search-results'];
-  return arrayOfNames.map(item => {
-    let name = item['matching_full_name'].split(',');
-    let link = item['_links']['city:item'].href;
-    let id = link.split(':')[2].replace('/', '');
+export const cleanDetails = data => {
+  let qualityOfLife = data.categories.map(category => {
     return {
-      id: id,
-      city: name[0] + ',' + name[2],
-      apiLink: link
+      color: category.color,
+      name: category.name,
+      scoreOutOfTen: category['score_out_of_10'].toFixed(1)
     };
   });
+  return {
+    qualityOfLife: qualityOfLife,
+    summary: data.summary,
+    totalScore: data['teleport_city_score'].toFixed(2)
+  };
 };
