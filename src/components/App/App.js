@@ -8,7 +8,9 @@ import { fetchAllCities, fetchCity } from '../../helper-fns/apiCalls';
 
 export const App = () => {
   const [allCities, setAllCities] = useState([]);
-  const [city, setCity] = useState({});
+  const [cityName, setCityName] = useState('');
+  const [cityDetails, setCityDetails] = useState({});
+  const [cityImage, setCityImage] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -35,8 +37,10 @@ export const App = () => {
       try {
         let randomCity =
           allCities[Math.floor(Math.random() * allCities.length)];
+        setCityName(randomCity.name);
         let cityDetails = await fetchCity(randomCity.href);
-        setCity(cityDetails);
+        setCityDetails(cityDetails[0]);
+        setCityImage(cityDetails[1]);
       } catch (error) {
         setErrorMessage(error.message);
       }
