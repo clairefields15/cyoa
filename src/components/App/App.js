@@ -8,10 +8,16 @@ import { fetchAllCities } from '../../helper-fns/apiCalls';
 
 export const App = () => {
   const [allCities, setAllCities] = useState([]);
+  const [city, setCity] = useState({});
 
   useEffect(() => {
     fetchAllCities().then(data => setAllCities(data));
   }, []);
+
+  useEffect(() => {
+    let randomCity = allCities[Math.floor(Math.random() * allCities.length)];
+    setCity(randomCity);
+  }, [allCities]);
 
   return (
     <Switch>
