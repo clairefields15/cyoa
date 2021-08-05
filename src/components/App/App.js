@@ -5,6 +5,7 @@ import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 import { Favorites } from '../Favorites/Favorites';
 import { ScrollToTop } from '../../helper-fns/ScrollToTop';
 import { fetchAllCities, fetchCity } from '../../helper-fns/apiCalls';
+import './App.css';
 
 export const App = () => {
   const [allCities, setAllCities] = useState([]);
@@ -50,24 +51,30 @@ export const App = () => {
     fetchDetails();
   }, [allCities]);
 
-  // useEffect(() => {
-  //   let randomCity = allCities[Math.floor(Math.random() * allCities.length)];
-  //   setCity(randomCity);
-  //   fetchCity(randomCity.apiLink);
-  // }, [allCities]);
-
   return (
-    <Switch>
+    <>
       <ScrollToTop />
-      <Route exact path='/' render={() => <Main />} />
+      <Switch>
+        <Route
+          exact
+          path='/'
+          render={() => (
+            <Main
+              cityName={cityName}
+              cityDetails={cityDetails}
+              cityImage={cityImage}
+            />
+          )}
+        />
 
-      <Route exact path='/favorites' render={() => <Favorites />} />
+        <Route exact path='/favorites' render={() => <Favorites />} />
 
-      <Route
-        render={() => (
-          <ErrorComponent errorMessage="Sorry that page doesn't exist, would you like to go home?" />
-        )}
-      />
-    </Switch>
+        <Route
+          render={() => (
+            <ErrorComponent errorMessage="Sorry that page doesn't exist, would you like to go home?" />
+          )}
+        />
+      </Switch>
+    </>
   );
 };
