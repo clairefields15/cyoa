@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Logo } from '../Logo/Logo';
 import { CityImage } from '../CityImage/CityImage';
+import './Main.css';
 
 export const Main = ({ cityName, cityDetails, cityImage }) => {
   return (

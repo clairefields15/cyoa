@@ -1,17 +1,17 @@
 .logo-container {
   display: flex;
-  height: 6em;
+  height: 2.5em;
   background-color: #5894cd;
   align-items: center;
   justify-content: center;
 }
 
 .logo-img {
-  height: 4em;
+  height: 2em;
   width: auto;
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2em;
   color: white;
 }
