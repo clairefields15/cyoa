@@ -26,29 +26,30 @@ export const App = () => {
         setAllCities(data);
       } catch (error) {
         setErrorMessage(error.message);
-        // setIsLoading(false);
+        setIsLoading(false);
       }
     };
-
     fetchCities();
   }, []);
 
   useEffect(() => {
-    const fetchDetails = async () => {
-      setErrorMessage('');
-      try {
-        let randomCity =
-          allCities[Math.floor(Math.random() * allCities.length)];
-        setCityName(randomCity.name);
-        let cityDetails = await fetchCity(randomCity.href);
-        setCityDetails(cityDetails[0]);
-        setCityImage(cityDetails[1]);
-      } catch (error) {
-        setErrorMessage(error.message);
-        // setIsLoading(false);
-      }
-    };
-    fetchDetails();
+    if (allCities.length) {
+      const fetchDetails = async () => {
+        setErrorMessage('');
+        try {
+          let randomCity =
+            allCities[Math.floor(Math.random() * allCities.length)];
+          setCityName(randomCity.name);
+          let cityDetails = await fetchCity(randomCity.href);
+          setCityDetails(cityDetails[0]);
+          setCityImage(cityDetails[1]);
+        } catch (error) {
+          setErrorMessage(error.message);
+          setIsLoading(false);
+        }
+      };
+      fetchDetails();
+    }
   }, [allCities]);
 
   useEffect(() => {
