@@ -22,9 +22,13 @@ export const cleanScores = data => {
       scoreOutOfTen: category['score_out_of_10'].toFixed(1)
     };
   });
+
+  let cleanedSummary = data.summary.replace(/(<([^>]+)>)/gi, '');
+  // need to remove <p></p> <b></b>
+
   return {
     qualityOfLife: qualityOfLife,
-    summary: data.summary,
+    summary: cleanedSummary,
     totalScore: data['teleport_city_score'].toFixed(2)
   };
 };
