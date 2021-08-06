@@ -17,9 +17,8 @@ export const checkForErrors = response => {
 export const cleanScores = data => {
   let qualityOfLife = data.categories.map(category => {
     return {
-      color: category.color,
       name: category.name,
-      scoreOutOfTen: category['score_out_of_10'].toFixed(1)
+      scoreOutOfTen: parseInt(category['score_out_of_10'].toFixed(1))
     };
   });
 

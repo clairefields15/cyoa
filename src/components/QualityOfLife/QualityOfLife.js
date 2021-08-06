@@ -1,14 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Bar } from 'react-chartjs-2';
+import { defaults } from 'react-chartjs-2';
+import './QualityOfLife.css';
+defaults.font.size = 14;
 
 export const QualityOfLife = ({ cityDetails }) => {
   const labels = cityDetails.qualityOfLife.map(detail => {
+    if (detail.name === 'Environmental Quality') {
+      return 'Environment';
+    }
+
     return detail.name;
   });
 
   const scores = cityDetails.qualityOfLife.map(detail => {
-    return parseInt(detail.scoreOutOfTen);
+    return detail.scoreOutOfTen;
   });
 
   const data = {
@@ -32,16 +39,32 @@ export const QualityOfLife = ({ cityDetails }) => {
           'rgba(153, 102, 255, 1)',
           'rgba(255, 159, 64, 1)'
         ],
-        borderWidth: 1
+        borderWidth: 1,
+        barPercentage: 1.0,
+        categoryPercentage: 1.0,
+        maxBarThickness: 20
       }
     ]
   };
 
   const options = {
+    maintainAspectRatio: false,
     indexAxis: 'y',
-    elements: {
-      bar: {
-        borderWidth: 2
+    scales: {
+      x: {
+        grid: {
+          display: false
+        },
+        ticks: {
+          min: 0,
+          max: 100,
+          stepSize: 20
+        }
+      },
+      y: {
+        grid: {
+          display: false
+        }
       }
     },
     responsive: true,
@@ -51,12 +74,15 @@ export const QualityOfLife = ({ cityDetails }) => {
       },
       title: {
         display: false
+      },
+      labels: {
+        fontSize: 50
       }
     }
   };
 
   return (
-    <section>
+    <section className='qual-of-life'>
       <h2>Quality Of Life</h2>
       <div className='chart'>
         <Bar data={data} options={options} />
