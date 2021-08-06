@@ -1,0 +1,12 @@
+.qual-of-life {
+  border: 1px solid #5894cd;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5em;
+  margin-top: 1em;
+}
+
+.chart {
+  height: 80vh;
+}
