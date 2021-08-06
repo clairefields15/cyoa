@@ -6,7 +6,7 @@ export const Summary = ({ cityDetails }) => {
   return (
     <section className='summary-container'>
       <h2>Summary</h2>
-      {cityDetails.summary}
+      <p>{cityDetails.summary}</p>
     </section>
   );
 };
