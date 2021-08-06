@@ -24,7 +24,6 @@ export const cleanScores = data => {
   });
 
   let cleanedSummary = data.summary.replace(/(<([^>]+)>)/gi, '');
-  // need to remove <p></p> <b></b>
 
   return {
     qualityOfLife: qualityOfLife,
