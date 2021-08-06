@@ -12,7 +12,7 @@ export const App = () => {
   const [allCities, setAllCities] = useState([]);
   const [cityName, setCityName] = useState('');
   const [cityDetails, setCityDetails] = useState({});
-  const [cityImage, setCityImage] = useState({});
+  const [cityImage, setCityImage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -25,39 +25,47 @@ export const App = () => {
         setAllCities(data);
       } catch (error) {
         setErrorMessage(error.message);
+        setIsLoading(false);
       }
     };
-
     fetchCities();
   }, []);
 
   useEffect(() => {
-    const fetchDetails = async () => {
-      setErrorMessage('');
-      try {
-        let randomCity =
-          allCities[Math.floor(Math.random() * allCities.length)];
-        setCityName(randomCity.name);
-        let cityDetails = await fetchCity(randomCity.href);
-        setCityDetails(cityDetails[0]);
-        setCityImage(cityDetails[1]);
-        setIsLoading(false);
-      } catch (error) {
-        setErrorMessage(error.message);
-        setIsLoading(false);
-      }
-    };
-
-    fetchDetails();
+    if (allCities.length) {
+      const fetchDetails = async () => {
+        setErrorMessage('');
+        try {
+          let randomCity =
+            allCities[Math.floor(Math.random() * allCities.length)];
+          setCityName(randomCity.name);
+          let cityDetails = await fetchCity(randomCity.href);
+          setCityDetails(cityDetails[0]);
+          setCityImage(cityDetails[1]);
+        } catch (error) {
+          setErrorMessage(error.message);
+          setIsLoading(false);
+        }
+      };
+      fetchDetails();
+    }
   }, [allCities]);
+
+  useEffect(() => {
+    if (cityImage) {
+      setIsLoading(false);
+    }
+  }, [cityImage]);
 
   return (
     <>
       <ScrollToTop />
       <Logo />
-
-      {!!errorMessage && <ErrorComponent errorMessage={errorMessage} />}
-      {!errorMessage && (
+      {!errorMessage && isLoading && <h2>Loading...</h2>}
+      {!!errorMessage && !isLoading && (
+        <ErrorComponent errorMessage={errorMessage} />
+      )}
+      {!errorMessage && !isLoading && (
         <Switch>
           <Route
             exact
@@ -67,7 +75,6 @@ export const App = () => {
                 cityName={cityName}
                 cityDetails={cityDetails}
                 cityImage={cityImage}
-                isLoading={isLoading}
               />
             )}
           />

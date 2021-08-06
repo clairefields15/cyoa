@@ -6,8 +6,7 @@ describe('Main view', () => {
     cy.get('h1').contains('CYOA');
   });
 
-  it.skip('If fetches are loading, should see loading message/image', () => {
-    cy.visit('http://localhost:3000');
+  it('Should see an image and a city name', () => {
     cy.intercept('GET', 'https://api.teleport.org/api/urban_areas/', {
       statusCode: 200,
       fixture: 'allCities.json'
@@ -17,7 +16,7 @@ describe('Main view', () => {
       'https://api.teleport.org/api/urban_areas/slug:aarhus/scores/',
       {
         statusCode: 200,
-        fixture: 'scores.json'
+        fixture: 'aarhus_scores.json'
       }
     );
     cy.intercept(
@@ -25,36 +24,92 @@ describe('Main view', () => {
       'https://api.teleport.org/api/urban_areas/slug:aarhus/images/',
       {
         statusCode: 200,
-        fixture: 'images.json'
+        fixture: 'aarhus_images.json'
       }
     );
-
-    cy.get('h2').contains('Loading...');
-  });
-
-  it('Should see a random image and a city name', () => {
-    cy.intercept('GET', 'https://api.teleport.org/api/urban_areas/', {
-      statusCode: 200,
-      fixture: 'allCities.json'
-    });
-    // cy.intercept(
-    //   'GET',
-    //   'https://api.teleport.org/api/urban_areas/slug:aarhus/scores/',
-    //   {
-    //     statusCode: 200,
-    //     fixture: 'aarhus_scores.json'
-    //   }
-    // );
-    // cy.intercept(
-    //   'GET',
-    //   'https://api.teleport.org/api/urban_areas/slug:aarhus/images/',
-    //   {
-    //     statusCode: 200,
-    //     fixture: 'aarhus_images.json'
-    //   }
-    // );
     cy.visit('http://localhost:3000');
     cy.get('.img-container').find('img').should('be.visible');
     cy.get('h2').should('contain', 'Aarhus');
+  });
+
+  it('Should see a message if the fetch fails (404)', () => {
+    cy.intercept('GET', 'https://api.teleport.org/api/urban_areas/', {
+      statusCode: 404,
+      fixture: 'allCities.json'
+    });
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/scores/',
+      {
+        statusCode: 404,
+        fixture: 'aarhus_scores.json'
+      }
+    );
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/images/',
+      {
+        statusCode: 404,
+        fixture: 'aarhus_images.json'
+      }
+    );
+    cy.visit('http://localhost:3000');
+    cy.get('h2').should(
+      'contain',
+      "Sorry, we're having trouble finding any cities for you. Check back later"
+    );
+  });
+
+  it('Should see a message if the fetch fails (500)', () => {
+    cy.intercept('GET', 'https://api.teleport.org/api/urban_areas/', {
+      statusCode: 500,
+      fixture: 'allCities.json'
+    });
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/scores/',
+      {
+        statusCode: 500,
+        fixture: 'aarhus_scores.json'
+      }
+    );
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/images/',
+      {
+        statusCode: 500,
+        fixture: 'aarhus_images.json'
+      }
+    );
+    cy.visit('http://localhost:3000');
+    cy.get('h2').should(
+      'contain',
+      "So sorry, our servers are down, you'll have to dream another day"
+    );
+  });
+
+  it('Should see a message if the fetch fails (else)', () => {
+    cy.intercept('GET', 'https://api.teleport.org/api/urban_areas/', {
+      statusCode: 401,
+      fixture: 'allCities.json'
+    });
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/scores/',
+      {
+        statusCode: 401,
+        fixture: 'aarhus_scores.json'
+      }
+    );
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/images/',
+      {
+        statusCode: 401,
+        fixture: 'aarhus_images.json'
+      }
+    );
+    cy.visit('http://localhost:3000');
+    cy.get('h2').should('contain', 'Something went wrong');
   });
 });

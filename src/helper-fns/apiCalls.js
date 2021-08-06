@@ -25,7 +25,7 @@ export const fetchScores = async url => {
 export const fetchImages = async url => {
   let response = await fetch(`${url}images/`);
   let data = await checkForErrors(response);
-  return data.photos[0].image;
+  return data.photos[0].image.mobile;
 };
 
 // export const fetchDetails = async url => {
