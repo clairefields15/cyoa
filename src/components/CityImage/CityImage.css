@@ -16,3 +16,7 @@
   padding-left: 1em;
   padding: 0.5em;
 }
+
+.show {
+  display: block;
+}

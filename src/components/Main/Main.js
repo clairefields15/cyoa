@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { CityImage } from '../CityImage/CityImage';
 import './Main.css';
 
-export const Main = ({ cityName, cityDetails, cityImage, isLoading }) => {
+export const Main = ({ cityName, cityDetails, cityImage }) => {
   return (
     <main>
-      {isLoading && <h2 className='loading-msg'>Loading...</h2>}
-      {!isLoading && <CityImage cityImage={cityImage} cityName={cityName} />}
+      <CityImage cityImage={cityImage} cityName={cityName} />
     </main>
   );
 };
@@ -15,6 +14,5 @@ export const Main = ({ cityName, cityDetails, cityImage, isLoading }) => {
 Main.propTypes = {
   cityName: PropTypes.string.isRequired,
   cityDetails: PropTypes.object.isRequired,
-  cityImage: PropTypes.object.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  cityImage: PropTypes.string.isRequired
 };
