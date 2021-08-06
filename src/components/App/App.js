@@ -15,7 +15,6 @@ export const App = () => {
   const [cityImage, setCityImage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
-  const [imageRendered, setImageRendered] = useState(false);
 
   useEffect(() => {
     const fetchCities = async () => {
