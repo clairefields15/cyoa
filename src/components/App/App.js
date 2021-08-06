@@ -62,7 +62,7 @@ export const App = () => {
     <>
       <ScrollToTop />
       <Logo />
-
+      {!errorMessage && isLoading && <h2>Loading...</h2>}
       {!!errorMessage && !isLoading && (
         <ErrorComponent errorMessage={errorMessage} />
       )}
