@@ -7,6 +7,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* border: 1px solid red; */
+  position: relative;
 }
 
 .magic-8-ball button {
@@ -21,4 +23,22 @@
   border: 1px solid #b6dcfe;
   background-color: #5894cd;
   cursor: pointer;
+}
+
+.message {
+  color: white;
+  font-family: Helvetica, sans-serif;
+  font-size: 1em;
+}
+
+.message-container {
+  position: absolute;
+  top: 36%;
+  /* border: 1px solid red; */
+  width: 30%;
+  height: 20%;
+  z-index: 2;
+  max-width: 200px;
+  max-height: 200px;
+  text-align: center;
 }
