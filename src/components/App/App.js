@@ -20,6 +20,7 @@ export const App = () => {
     const fetchCities = async () => {
       setIsLoading(true);
       setErrorMessage('');
+      //maybe all cities don't need to be in state??
       try {
         let data = await fetchAllCities();
         setAllCities(data);

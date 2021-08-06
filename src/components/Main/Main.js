@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CityImage } from '../CityImage/CityImage';
 import { Summary } from '../Summary/Summary';
+import { QualityOfLife } from '../QualityOfLife/QualityOfLife';
 import './Main.css';
 
 export const Main = ({ cityName, cityDetails, cityImage }) => {
@@ -9,6 +10,7 @@ export const Main = ({ cityName, cityDetails, cityImage }) => {
     <main>
       <CityImage cityImage={cityImage} cityName={cityName} />
       <Summary cityDetails={cityDetails} />
+      <QualityOfLife cityDetails={cityDetails} />
     </main>
   );
 };
