@@ -112,4 +112,32 @@ describe('Main view', () => {
     cy.visit('http://localhost:3000');
     cy.get('h2').should('contain', 'Something went wrong');
   });
+
+  it('Should see a summary of the city', () => {
+    cy.intercept('GET', 'https://api.teleport.org/api/urban_areas/', {
+      statusCode: 200,
+      fixture: 'allCities.json'
+    });
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/scores/',
+      {
+        statusCode: 200,
+        fixture: 'aarhus_scores.json'
+      }
+    );
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/images/',
+      {
+        statusCode: 200,
+        fixture: 'aarhus_images.json'
+      }
+    );
+    cy.visit('http://localhost:3000');
+    cy.get('h2').should('contain', 'Summary');
+    cy.get('p').contains(
+      'Aarhus, Denmark, is among the top cities with a free business environment. According to our city rankings, this is a good place to live with high ratings in safety, healthcare and environmental quality.'
+    );
+  });
 });
