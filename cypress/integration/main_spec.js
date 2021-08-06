@@ -87,4 +87,29 @@ describe('Main view', () => {
       "So sorry, our servers are down, you'll have to dream another day"
     );
   });
+
+  it('Should see a message if the fetch fails (else)', () => {
+    cy.intercept('GET', 'https://api.teleport.org/api/urban_areas/', {
+      statusCode: 401,
+      fixture: 'allCities.json'
+    });
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/scores/',
+      {
+        statusCode: 401,
+        fixture: 'aarhus_scores.json'
+      }
+    );
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/images/',
+      {
+        statusCode: 401,
+        fixture: 'aarhus_images.json'
+      }
+    );
+    cy.visit('http://localhost:3000');
+    cy.get('h2').should('contain', 'Something went wrong');
+  });
 });
