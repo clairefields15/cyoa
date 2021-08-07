@@ -4,6 +4,7 @@ import './Nav.css';
 import home from '../../images/home.png';
 import nope from '../../images/nope.png';
 import likeBlack from '../../images/likeBlack.png';
+// add a hover state to the like button?
 // import likeRed from '../../images/likeRed.png';
 import user from '../../images/user.png';
 
@@ -14,9 +15,7 @@ export const Nav = ({ addToFavorites, favorites, cityName }) => {
   const handleLike = async e => {
     e.preventDefault();
     setDisableButton(true);
-    // go into App and do more stuff
     await addToFavorites();
-    // once done, re-enable button
     setDisableButton(false);
   };
   return (

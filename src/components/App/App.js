@@ -19,7 +19,6 @@ export const App = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [favorites, setFavorites] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  // const [dislikes, setDislikes] = useState([]);
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -66,11 +65,9 @@ export const App = () => {
   }, [cityImage]);
 
   const addToFavorites = async e => {
-    // the favorite should only be added if it is unique
     const duplicate = favorites.find(favorite => favorite.name === cityName);
 
     if (!duplicate) {
-      // a modal pops up saying city has been added
       await showModalTimeout(1000);
       let city = {
         name: cityName,
@@ -78,18 +75,8 @@ export const App = () => {
         image: cityImage
       };
       setFavorites([...favorites, city]);
-
-      // should scroll to the top of the page
-      // should see a new city appear automatically
       const newCitiesArray = allCities.filter(city => city.name !== cityName);
       setAllCities(newCitiesArray);
-      // window.scrollTo(0, 0);
-
-      // modal should disappear
-      // setShowModal(false);
-
-      // you shouldn't see that city again on the main page
-      // should be able to click on your favorites and see the city has been added
     } else {
       console.log('duplicate');
       return;
@@ -98,21 +85,13 @@ export const App = () => {
 
   const showModalTimeout = ms => {
     setShowModal(true);
-    // while this is true, other nav buttons should be disabled
     return new Promise(resolve => setTimeout(resolve, ms));
   };
-
-  // useEffect(() => {
-  //   if (favorites.length) {
-  //     // modal should disappear
-  //     setShowModal(false);
-  //   }
-  // }, [favorites]);
 
   return (
     <>
       <ScrollToTop />
-      <Logo />
+      {!showModal && <Logo />}
       <Nav
         addToFavorites={addToFavorites}
         favorites={favorites}
