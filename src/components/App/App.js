@@ -7,6 +7,7 @@ import { ScrollToTop } from '../../helper-fns/ScrollToTop';
 import { fetchAllCities, fetchCity } from '../../helper-fns/apiCalls';
 import { Logo } from '../Logo/Logo';
 import { Nav } from '../Nav/Nav';
+import { Modal } from '../Modal/Modal';
 import './App.css';
 
 export const App = () => {
@@ -17,6 +18,7 @@ export const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [favorites, setFavorites] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   // const [dislikes, setDislikes] = useState([]);
 
   useEffect(() => {
@@ -58,27 +60,53 @@ export const App = () => {
   useEffect(() => {
     if (cityImage) {
       setIsLoading(false);
+      setShowModal(false);
     }
   }, [cityImage]);
 
-  const addToFavorites = e => {
-    e.preventDefault();
+  const addToFavorites = async e => {
+    // the favorite should only be added if it is unique
     const duplicate = favorites.find(favorite => favorite.name === cityName);
 
-    if (duplicate) {
-      return;
-    } else {
+    if (!duplicate) {
+      // a modal pops up saying city has been added
+      await showModalTimeout(1500);
       let city = {
         name: cityName,
         details: cityDetails,
         image: cityImage
       };
       setFavorites([...favorites, city]);
-      alert('hi');
+
+      // should scroll to the top of the page
+      window.scrollTo(0, 0);
+      // should see a new city appear automatically
       const newCitiesArray = allCities.filter(city => city.name !== cityName);
       setAllCities(newCitiesArray);
+
+      // modal should disappear
+      // setShowModal(false);
+
+      // you shouldn't see that city again on the main page
+      // should be able to click on your favorites and see the city has been added
+    } else {
+      console.log('duplicate');
+      return;
     }
   };
+
+  const showModalTimeout = ms => {
+    setShowModal(true);
+    // while this is true, other nav buttons should be disabled
+    return new Promise(resolve => setTimeout(resolve, ms));
+  };
+
+  // useEffect(() => {
+  //   if (favorites.length) {
+  //     // modal should disappear
+  //     setShowModal(false);
+  //   }
+  // }, [favorites]);
 
   return (
     <>
@@ -93,6 +121,7 @@ export const App = () => {
       {!!errorMessage && !isLoading && (
         <ErrorComponent errorMessage={errorMessage} />
       )}
+      {showModal && <Modal />}
       {!errorMessage && !isLoading && (
         <>
           <Switch>
