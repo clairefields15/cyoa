@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
 import './Nav.css';
 import home from '../../images/home.png';
@@ -7,8 +7,18 @@ import likeBlack from '../../images/likeBlack.png';
 import likeRed from '../../images/likeRed.png';
 import user from '../../images/user.png';
 
-export const Nav = () => {
+export const Nav = ({ addToFavorites, favorites, cityName }) => {
   const { pathname } = useLocation();
+  const [isInFavs, setIsInFavs] = useState(false);
+
+  useEffect(() => {
+    favorites.map(favorite => {
+      if (cityName === favorite.name) {
+        return setIsInFavs(true);
+      }
+      setIsInFavs(false);
+    });
+  }, [favorites, cityName]);
 
   return (
     <>
@@ -27,12 +37,20 @@ export const Nav = () => {
             <img src={user} alt='view favorites' className='nav-icon' />
             Favorites
           </NavLink>
-          <button className='nav-button'>
-            <img
-              src={likeBlack}
-              alt='favorite this city'
-              className='nav-icon'
-            />
+          <button className='nav-button' onClick={e => addToFavorites(e)}>
+            {isInFavs ? (
+              <img
+                src={likeRed}
+                alt='this city is favorited'
+                className='nav-icon'
+              />
+            ) : (
+              <img
+                src={likeBlack}
+                alt='favorite this city'
+                className='nav-icon'
+              />
+            )}
             Like
           </button>
         </nav>

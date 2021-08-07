@@ -16,6 +16,8 @@ export const App = () => {
   const [cityImage, setCityImage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+  const [favorites, setFavorites] = useState([]);
+  // const [dislikes, setDislikes] = useState([]);
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -59,11 +61,31 @@ export const App = () => {
     }
   }, [cityImage]);
 
+  const addToFavorites = e => {
+    e.preventDefault();
+    const duplicate = favorites.find(favorite => favorite.name === cityName);
+
+    if (duplicate) {
+      return;
+    } else {
+      let city = {
+        name: cityName,
+        details: cityDetails,
+        image: cityImage
+      };
+      setFavorites([...favorites, city]);
+    }
+  };
+
   return (
     <>
       <ScrollToTop />
       <Logo />
-      <Nav />
+      <Nav
+        addToFavorites={addToFavorites}
+        favorites={favorites}
+        cityName={cityName}
+      />
       {!errorMessage && isLoading && <h2>Loading...</h2>}
       {!!errorMessage && !isLoading && (
         <ErrorComponent errorMessage={errorMessage} />
@@ -83,7 +105,11 @@ export const App = () => {
               )}
             />
 
-            <Route exact path='/favorites' render={() => <Favorites />} />
+            <Route
+              exact
+              path='/favorites'
+              render={() => <Favorites favorites={favorites} />}
+            />
 
             <Route
               render={() => (
