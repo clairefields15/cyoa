@@ -20,11 +20,11 @@ describe('Magic 8 ball user interaction', () => {
         fixture: 'aarhus_images.json'
       }
     );
+    cy.visit('http://localhost:3000');
+    cy.get('button').click();
   });
 
   it('after button click the 8 ball should shake', () => {
-    cy.visit('http://localhost:3000');
-    cy.get('button').click();
     cy.intercept(
       'GET',
       'https://8ball.delegator.com/magic/JSON/Should%20I%20move%3F',
@@ -37,8 +37,6 @@ describe('Magic 8 ball user interaction', () => {
   });
 
   it('after request is resolved, the 8 ball image should change', () => {
-    cy.visit('http://localhost:3000');
-    cy.get('button').click();
     cy.intercept(
       'GET',
       'https://8ball.delegator.com/magic/JSON/Should%20I%20move%3F',
@@ -57,8 +55,6 @@ describe('Magic 8 ball user interaction', () => {
   });
 
   it('should see an answer when the request resolves', () => {
-    cy.visit('http://localhost:3000');
-    cy.get('button').click();
     cy.intercept(
       'GET',
       'https://8ball.delegator.com/magic/JSON/Should%20I%20move%3F',
@@ -71,8 +67,6 @@ describe('Magic 8 ball user interaction', () => {
   });
 
   it('should see a message if the fetch fails (404)', () => {
-    cy.visit('http://localhost:3000');
-    cy.get('button').click();
     cy.intercept(
       'GET',
       'https://8ball.delegator.com/magic/JSON/Should%20I%20move%3F',
@@ -84,8 +78,6 @@ describe('Magic 8 ball user interaction', () => {
   });
 
   it('should see a message if the fetch fails (500)', () => {
-    cy.visit('http://localhost:3000');
-    cy.get('button').click();
     cy.intercept(
       'GET',
       'https://8ball.delegator.com/magic/JSON/Should%20I%20move%3F',
@@ -99,8 +91,6 @@ describe('Magic 8 ball user interaction', () => {
   });
 
   it('should see a message if the fetch fails (other)', () => {
-    cy.visit('http://localhost:3000');
-    cy.get('button').click();
     cy.intercept(
       'GET',
       'https://8ball.delegator.com/magic/JSON/Should%20I%20move%3F',
