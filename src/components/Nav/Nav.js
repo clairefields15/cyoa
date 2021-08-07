@@ -22,7 +22,7 @@ export const Nav = ({ addToFavorites, favorites, cityName }) => {
     <>
       {pathname === '/' && (
         <nav>
-          <button className='nav-button'>
+          <button className='nav-button' id='nope-btn'>
             <img src={nope} alt="don't like this city" className='nav-icon' />
             Nope
           </button>
@@ -31,6 +31,7 @@ export const Nav = ({ addToFavorites, favorites, cityName }) => {
             exact
             activeClassName='hidden-link'
             className='nav-button'
+            id='favorites-btn'
           >
             <img src={user} alt='view favorites' className='nav-icon' />
             Favorites
@@ -39,6 +40,7 @@ export const Nav = ({ addToFavorites, favorites, cityName }) => {
             className='nav-button'
             onClick={e => handleLike(e)}
             disabled={disableButton}
+            id='like-btn'
           >
             <img
               src={likeBlack}
@@ -56,6 +58,7 @@ export const Nav = ({ addToFavorites, favorites, cityName }) => {
             exact
             activeClassName='hidden-link'
             className='nav-button'
+            id='explore-btn'
           >
             <img src={home} alt='go home' className='nav-icon' />
             Explore
