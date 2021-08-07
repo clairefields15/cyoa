@@ -16,7 +16,7 @@ export const EightBall = ({ cityName }) => {
     setMessage('');
     setError('');
     setCount(count + 1);
-    await shakeBall(2000);
+    await shakeBall(1300);
     try {
       let answer = await fetchMessage('Should I move?');
       setMessage(answer);
