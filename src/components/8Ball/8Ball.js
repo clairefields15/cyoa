@@ -46,7 +46,7 @@ export const EightBall = ({ cityName }) => {
 
       {!shaking && message && !error && (
         <>
-          <img src={eightBallBLUE} alt='Magic 8 ball' />
+          <img src={eightBallBLUE} alt='Magic 8 ball with response' />
           <div className='message-container'>
             <p className='message'>{message}</p>
           </div>
@@ -55,7 +55,7 @@ export const EightBall = ({ cityName }) => {
 
       {!!error && (
         <>
-          <img src={eightBallBLUE} alt='Magic 8 ball' />
+          <img src={eightBallBLUE} alt='Magic 8 ball with response' />
           <div className='message-container'>
             <p className='message' style={{ color: 'red' }}>
               {error}

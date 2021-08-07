@@ -22,7 +22,41 @@ describe('Magic 8 ball user interaction', () => {
     );
   });
 
-  it('should be able to click the button to ask the magic 8 ball a question', () => {
+  it('after button click the 8 ball should shake', () => {
+    cy.visit('http://localhost:3000');
+    cy.get('button').click();
+    cy.intercept(
+      'GET',
+      'https://8ball.delegator.com/magic/JSON/Should%20I%20move%3F',
+      {
+        statusCode: 200,
+        fixture: 'magic_8.json'
+      }
+    );
+    cy.get('.magic-8-ball').find('img').should('have.class', 'shaking');
+  });
+
+  it('after request is resolved, the 8 ball image should change', () => {
+    cy.visit('http://localhost:3000');
+    cy.get('button').click();
+    cy.intercept(
+      'GET',
+      'https://8ball.delegator.com/magic/JSON/Should%20I%20move%3F',
+      {
+        statusCode: 200,
+        fixture: 'magic_8.json'
+      }
+    );
+    cy.wait(5500);
+    cy.get('.magic-8-ball')
+      .find('img')
+      .should('have.attr', 'alt')
+      .then(altText => {
+        expect(altText).to.equal('Magic 8 ball with response');
+      });
+  });
+
+  it('should see an answer when the request resolves', () => {
     cy.visit('http://localhost:3000');
     cy.get('button').click();
     cy.intercept(
@@ -62,5 +96,18 @@ describe('Magic 8 ball user interaction', () => {
     cy.get('.message').contains(
       "So sorry, our servers are down, you'll have to dream another day"
     );
+  });
+
+  it('should see a message if the fetch fails (other)', () => {
+    cy.visit('http://localhost:3000');
+    cy.get('button').click();
+    cy.intercept(
+      'GET',
+      'https://8ball.delegator.com/magic/JSON/Should%20I%20move%3F',
+      {
+        statusCode: 402
+      }
+    );
+    cy.get('.message').contains('Something went wrong');
   });
 });
