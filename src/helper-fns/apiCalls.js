@@ -37,6 +37,7 @@ export const fetchImages = async url => {
 
 export const fetchMessage = async message => {
   let params = encodeURIComponent(message);
+  console.log(params);
   let url = 'https://8ball.delegator.com/magic/JSON/' + params;
   let response = await fetch(url);
   let data = await checkForErrors(response);
