@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, NavLink, useLocation } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Main } from '../Main/Main';
 import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 import { Favorites } from '../Favorites/Favorites';
 import { ScrollToTop } from '../../helper-fns/ScrollToTop';
 import { fetchAllCities, fetchCity } from '../../helper-fns/apiCalls';
 import { Logo } from '../Logo/Logo';
+import { Nav } from '../Nav/Nav';
 import './App.css';
 
 export const App = () => {
-  const { pathname } = useLocation();
   const [allCities, setAllCities] = useState([]);
   const [cityName, setCityName] = useState('');
   const [cityDetails, setCityDetails] = useState({});
@@ -63,19 +63,7 @@ export const App = () => {
     <>
       <ScrollToTop />
       <Logo />
-      <nav>
-        <button>Remove</button>
-        {pathname === '/' ? (
-          <NavLink to='/favorites' exact activeClassName='hidden-link'>
-            Favorites
-          </NavLink>
-        ) : (
-          <NavLink to='/' exact activeClassName='hidden-link'>
-            Explore
-          </NavLink>
-        )}
-        <button>Add</button>
-      </nav>
+      <Nav />
       {!errorMessage && isLoading && <h2>Loading...</h2>}
       {!!errorMessage && !isLoading && (
         <ErrorComponent errorMessage={errorMessage} />
