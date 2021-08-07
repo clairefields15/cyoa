@@ -41,10 +41,32 @@ describe('Navigation and favoriting a city', () => {
 
   it('Clicking on favorites button changes url and nav buttons', () => {
     cy.get('a').contains('Favorites').click();
-    cy.url('should.contain', '/favorites');
+    cy.url().should('include', '/favorites');
     cy.get('a').contains('Explore');
     cy.get('[id=like-btn]').should('not.exist');
     cy.get('[id=favorites-btn]').should('not.exist');
     cy.get('[id=nope-btn]').should('not.exist');
+  });
+
+  it('Clicking on explore button changes url and nav buttons', () => {
+    cy.visit('http://localhost:3000/favorites');
+    cy.get('a').contains('Explore').click();
+    cy.url().should('eq', 'http://localhost:3000/');
+    cy.get('a').contains('Favorites');
+    cy.get('[id=like-btn]').should('exist');
+    cy.get('[id=favorites-btn]').should('exist');
+    cy.get('[id=nope-btn]').should('exist');
+  });
+
+  it('Should see a message if I have no favorites', () => {
+    cy.get('a').contains('Favorites').click();
+    cy.contains('Your Favorites');
+    cy.contains("You don't have any favorites yet");
+  });
+
+  it('Should be able to add a city to my favorites list', () => {
+    cy.get('[id=like-btn]').click();
+    cy.get('a').contains('Favorites').click();
+    cy.get('section').contains('City:');
   });
 });
