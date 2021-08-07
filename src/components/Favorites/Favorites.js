@@ -3,18 +3,19 @@ import React from 'react';
 export const Favorites = ({ favorites }) => {
   const makeCards = () => {
     if (favorites.length) {
-      console.log(favorites);
-      return <p>hi</p>;
+      return favorites.map(favorite => {
+        return <li>{favorite.name}</li>;
+      });
     } else {
       return (
-        <p>You don't have any favorites yet, click explore to get started!</p>
+        <p>You don't have any favorites yet, click "Explore" to get started!</p>
       );
     }
   };
   return (
     <>
       <h2>Your Favorites</h2>
-      {makeCards()}
+      <ul>{makeCards()}</ul>
     </>
   );
 };

@@ -9,16 +9,21 @@ import user from '../../images/user.png';
 
 export const Nav = ({ addToFavorites, favorites, cityName }) => {
   const { pathname } = useLocation();
-  const [isInFavs, setIsInFavs] = useState(false);
+  const [favorited, setFavorited] = useState(false);
 
-  useEffect(() => {
-    favorites.map(favorite => {
-      if (cityName === favorite.name) {
-        return setIsInFavs(true);
-      }
-      setIsInFavs(false);
-    });
-  }, [favorites, cityName]);
+  const handleLike = async e => {
+    e.preventDefault();
+    setFavorited(!favorited);
+  };
+
+  // useEffect(() => {
+  //   favorites.map(favorite => {
+  //     if (cityName === favorite.name) {
+  //       return setFavorited(true);
+  //     }
+  //     setFavorited(false);
+  //   });
+  // }, [favorites, cityName]);
 
   return (
     <>
@@ -37,20 +42,16 @@ export const Nav = ({ addToFavorites, favorites, cityName }) => {
             <img src={user} alt='view favorites' className='nav-icon' />
             Favorites
           </NavLink>
-          <button className='nav-button' onClick={e => addToFavorites(e)}>
-            {isInFavs ? (
-              <img
-                src={likeRed}
-                alt='this city is favorited'
-                className='nav-icon'
-              />
-            ) : (
-              <img
-                src={likeBlack}
-                alt='favorite this city'
-                className='nav-icon'
-              />
-            )}
+          <button
+            className='nav-button'
+            onClick={e => addToFavorites(e)}
+            disabled={favorited}
+          >
+            <img
+              src={favorited ? likeRed : likeBlack}
+              alt='favorite this city'
+              className='nav-icon'
+            />
             Like
           </button>
         </nav>

@@ -74,6 +74,9 @@ export const App = () => {
         image: cityImage
       };
       setFavorites([...favorites, city]);
+      alert('hi');
+      const newCitiesArray = allCities.filter(city => city.name !== cityName);
+      setAllCities(newCitiesArray);
     }
   };
 

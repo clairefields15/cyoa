@@ -26,3 +26,17 @@ nav {
   color: black;
   font-size: 1em;
 }
+
+.nav-icon[favorited] {
+  background-color: purple;
+  animation: fadeOut 3s;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
