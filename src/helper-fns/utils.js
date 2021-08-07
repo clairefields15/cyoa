@@ -1,8 +1,6 @@
 export const checkForErrors = response => {
   if (response.status === 404) {
-    throw new Error(
-      "Sorry, we're having trouble finding any cities for you. Check back later"
-    );
+    throw new Error('Oops, 404. Check back later.');
   } else if (response.status === 500) {
     throw new Error(
       "So sorry, our servers are down, you'll have to dream another day"
@@ -29,6 +27,14 @@ export const cleanScores = data => {
     summary: cleanedSummary,
     totalScore: data['teleport_city_score'].toFixed(2)
   };
+};
+
+export const cleanMessage = data => {
+  let message = data.magic.answer.toUpperCase();
+  if (message === 'CONCENTRATE AND ASK AGAIN') {
+    return 'FOCUS AND TRY AGAIN';
+  }
+  return message;
 };
 
 // export const cleanDetails = data => {
