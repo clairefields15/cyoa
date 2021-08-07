@@ -7,12 +7,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 1px solid red; */
   position: relative;
 }
 
 .magic-8-ball button {
-  padding: 0.5em;
+  padding: 0.75em;
   font-size: 1em;
   border-radius: 4em;
   border: 1px solid #5894cd;
@@ -25,6 +24,32 @@
   cursor: pointer;
 }
 
+.shaking {
+  animation: dance 0.3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes dance {
+  0% {
+    transform: translate(2px, 2px) rotate(1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(-1deg);
+  }
+  40% {
+    transform: translate(2px, -2px) rotate(2deg);
+  }
+  60% {
+    transform: translate(-3px, 2px) rotate(1deg);
+  }
+  80% {
+    transform: translate(-2px, -2px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(2px, -2px) rotate(2deg);
+  }
+}
+
 .message {
   color: white;
   font-family: Helvetica, sans-serif;
@@ -33,12 +58,20 @@
 
 .message-container {
   position: absolute;
-  top: 36%;
-  /* border: 1px solid red; */
+  top: 40%;
   width: 30%;
   height: 20%;
-  z-index: 2;
   max-width: 200px;
   max-height: 200px;
   text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+  .message {
+    font-size: 1.5em;
+  }
+
+  .magic-8-ball button {
+    font-size: 1.5em;
+  }
 }

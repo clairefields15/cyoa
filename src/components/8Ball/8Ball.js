@@ -6,33 +6,42 @@ import eightBallBLUE from '../../images/eightBallBLUE.png';
 import './8Ball.css';
 
 export const EightBall = ({ cityName }) => {
-  const [clicked, setClicked] = useState(false);
   const [message, setMessage] = useState('');
+  const [error, setError] = useState(false);
+  const [shaking, setShaking] = useState(false);
+  const [count, setCount] = useState(0);
 
   const handleClick = async e => {
     e.preventDefault();
-    setClicked(!clicked);
-    if (!clicked) {
+    setMessage('');
+    setError('');
+    setCount(count + 1);
+    await shakeBall(2000);
+    try {
       let answer = await fetchMessage('Should I move?');
-      console.log(answer);
       setMessage(answer);
-    } else {
-      setMessage('');
+      setShaking(false);
+    } catch (err) {
+      setError(err.message);
     }
   };
 
-  // const handleClick = useCallback(
-  //   e => {
-  //     e.preventDefault();
-  //     setClicked(!clicked);
-  //   },
-  //   [clicked]
-  // );
+  const shakeBall = ms => {
+    setShaking(true);
+    return new Promise(resolve => setTimeout(resolve, ms));
+  };
 
   return (
     <section className='magic-8-ball'>
-      {!clicked && <img src={eightBallFilled} alt='Magic 8 ball' />}
-      {clicked && (
+      {count === 0 && !error && (
+        <img src={eightBallFilled} alt='Magic 8 ball' />
+      )}
+
+      {shaking && !error && (
+        <img src={eightBallFilled} alt='Magic 8 ball' className='shaking' />
+      )}
+
+      {!shaking && message && !error && (
         <>
           <img src={eightBallBLUE} alt='Magic 8 ball' />
           <div className='message-container'>
@@ -40,7 +49,18 @@ export const EightBall = ({ cityName }) => {
           </div>
         </>
       )}
-      <button onClick={e => handleClick(e)}>
+
+      {!!error && (
+        <>
+          <img src={eightBallBLUE} alt='Magic 8 ball' />
+          <div className='message-container'>
+            <p className='message' style={{ color: 'red' }}>
+              {error}
+            </p>
+          </div>
+        </>
+      )}
+      <button onClick={e => handleClick(e)} disabled={error}>
         Should I move to {cityName}?
       </button>
     </section>
