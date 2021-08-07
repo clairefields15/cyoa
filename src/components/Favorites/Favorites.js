@@ -4,8 +4,7 @@ export const Favorites = ({ favorites }) => {
   const makeCards = () => {
     if (favorites.length) {
       return favorites.map(favorite => {
-        console.log(favorite);
-        return <li>{favorite.name}</li>;
+        return <li key={favorite.name}>{favorite.name}</li>;
       });
     } else {
       return (

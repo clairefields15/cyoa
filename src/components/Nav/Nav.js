@@ -4,7 +4,7 @@ import './Nav.css';
 import home from '../../images/home.png';
 import nope from '../../images/nope.png';
 import likeBlack from '../../images/likeBlack.png';
-import likeRed from '../../images/likeRed.png';
+// import likeRed from '../../images/likeRed.png';
 import user from '../../images/user.png';
 
 export const Nav = ({ addToFavorites, favorites, cityName }) => {

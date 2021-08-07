@@ -61,6 +61,7 @@ export const App = () => {
     if (cityImage) {
       setIsLoading(false);
       setShowModal(false);
+      window.scrollTo(0, 0);
     }
   }, [cityImage]);
 
@@ -70,7 +71,7 @@ export const App = () => {
 
     if (!duplicate) {
       // a modal pops up saying city has been added
-      await showModalTimeout(1500);
+      await showModalTimeout(1000);
       let city = {
         name: cityName,
         details: cityDetails,
@@ -79,10 +80,10 @@ export const App = () => {
       setFavorites([...favorites, city]);
 
       // should scroll to the top of the page
-      window.scrollTo(0, 0);
       // should see a new city appear automatically
       const newCitiesArray = allCities.filter(city => city.name !== cityName);
       setAllCities(newCitiesArray);
+      // window.scrollTo(0, 0);
 
       // modal should disappear
       // setShowModal(false);
@@ -122,7 +123,7 @@ export const App = () => {
         <ErrorComponent errorMessage={errorMessage} />
       )}
       {showModal && <Modal />}
-      {!errorMessage && !isLoading && (
+      {!errorMessage && !isLoading && !showModal && (
         <>
           <Switch>
             <Route
