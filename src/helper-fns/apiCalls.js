@@ -1,11 +1,10 @@
-import { checkForErrors, cleanScores } from './utils';
+import { checkForErrors, cleanScores, cleanMessage } from './utils';
 
 export const fetchAllCities = async () => {
   let baseURL = 'https://api.teleport.org/api/urban_areas/';
   let response = await fetch(baseURL);
   let data = await checkForErrors(response);
-  let nestedData = data['_links']['ua:item'];
-  return nestedData;
+  return data['_links']['ua:item'];
 };
 
 export const fetchCity = async url => {
@@ -35,3 +34,11 @@ export const fetchImages = async url => {
 //   console.log('clean', cleaned);
 //   return cleaned;
 // };
+
+export const fetchMessage = async message => {
+  let params = encodeURIComponent(message);
+  let url = 'https://8ball.delegator.com/magic/JSON/' + params;
+  let response = await fetch(url);
+  let data = await checkForErrors(response);
+  return cleanMessage(data);
+};

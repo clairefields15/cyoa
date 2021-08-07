@@ -54,10 +54,7 @@ describe('Main view', () => {
       }
     );
     cy.visit('http://localhost:3000');
-    cy.get('h2').should(
-      'contain',
-      "Sorry, we're having trouble finding any cities for you. Check back later"
-    );
+    cy.get('h2').should('contain', 'Oops, 404. Check back later.');
   });
 
   it('Should see a message if the fetch fails (500)', () => {
@@ -165,5 +162,56 @@ describe('Main view', () => {
     cy.visit('http://localhost:3000');
     cy.get('h2').should('contain', 'Quality Of Life');
     cy.get('canvas').should('be.visible');
+  });
+
+  it('Should see a button to ask the magic 8 ball', () => {
+    cy.intercept('GET', 'https://api.teleport.org/api/urban_areas/', {
+      statusCode: 200,
+      fixture: 'allCities.json'
+    });
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/scores/',
+      {
+        statusCode: 200,
+        fixture: 'aarhus_scores.json'
+      }
+    );
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/images/',
+      {
+        statusCode: 200,
+        fixture: 'aarhus_images.json'
+      }
+    );
+    cy.visit('http://localhost:3000');
+    cy.get('button').should('contain', 'Should I move to');
+  });
+
+  it('Should see an image of a magic 8 ball', () => {
+    cy.intercept('GET', 'https://api.teleport.org/api/urban_areas/', {
+      statusCode: 200,
+      fixture: 'allCities.json'
+    });
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/scores/',
+      {
+        statusCode: 200,
+        fixture: 'aarhus_scores.json'
+      }
+    );
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/images/',
+      {
+        statusCode: 200,
+        fixture: 'aarhus_images.json'
+      }
+    );
+    cy.visit('http://localhost:3000');
+    cy.get('.magic-8-ball').find('img').should('be.visible');
+    cy.get('.magic-8-ball').find('img').should('not.have.class');
   });
 });
