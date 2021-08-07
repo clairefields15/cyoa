@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { fetchMessage } from '../../helper-fns/apiCalls';
 import eightBallFilled from '../../images/eightBallFilled.png';
@@ -10,6 +10,11 @@ export const EightBall = ({ cityName }) => {
   const [error, setError] = useState(false);
   const [shaking, setShaking] = useState(false);
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setCount(0);
+    setMessage('');
+  }, [cityName]);
 
   const handleClick = async e => {
     e.preventDefault();
