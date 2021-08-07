@@ -8,6 +8,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  margin-bottom: 8em;
 }
 
 .magic-8-ball button {
@@ -16,6 +17,8 @@
   border-radius: 4em;
   border: 1px solid #5894cd;
   background-color: #b6dcfe;
+  margin-bottom: 1em;
+  margin-top: 0.5em;
 }
 
 .magic-8-ball button:hover {
@@ -58,7 +61,7 @@
 
 .message-container {
   position: absolute;
-  top: 40%;
+  top: 50%;
   width: 30%;
   height: 20%;
   max-width: 200px;

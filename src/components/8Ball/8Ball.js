@@ -33,6 +33,9 @@ export const EightBall = ({ cityName }) => {
 
   return (
     <section className='magic-8-ball'>
+      <button onClick={e => handleClick(e)} disabled={error}>
+        Should I move to {cityName}?
+      </button>
       {count === 0 && !error && (
         <img src={eightBallFilled} alt='Magic 8 ball' />
       )}
@@ -60,9 +63,6 @@ export const EightBall = ({ cityName }) => {
           </div>
         </>
       )}
-      <button onClick={e => handleClick(e)} disabled={error}>
-        Should I move to {cityName}?
-      </button>
     </section>
   );
 };
