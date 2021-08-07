@@ -1,20 +1,24 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { fetchMessage } from '../../helper-fns/apiCalls';
 import eightBallFilled from '../../images/eightBallFilled.png';
 import eightBallBLUE from '../../images/eightBallBLUE.png';
-import PropTypes from 'prop-types';
 import './8Ball.css';
 
 export const EightBall = ({ cityName }) => {
   const [clicked, setClicked] = useState(false);
-  const [message, setMessage] = useState('HELLO');
+  const [message, setMessage] = useState('');
 
-  const handleClick = e => {
+  const handleClick = async e => {
     e.preventDefault();
     setClicked(!clicked);
-    //fetch from 8ball API
-    //uppercase message
-    // set returned message in state
-    // conditionally render the message in the blue ball
+    if (!clicked) {
+      let answer = await fetchMessage('Should I move?');
+      console.log(answer);
+      setMessage(answer);
+    } else {
+      setMessage('');
+    }
   };
 
   // const handleClick = useCallback(

@@ -31,6 +31,14 @@ export const cleanScores = data => {
   };
 };
 
+export const cleanMessage = data => {
+  let message = data.magic.answer.toUpperCase();
+  if (message === 'CONCENTRATE AND ASK AGAIN') {
+    return 'FOCUS AND TRY AGAIN';
+  }
+  return message;
+};
+
 // export const cleanDetails = data => {
 //   console.log('cleaning!', data);
 //   let populationSize, climate, costOfLiving, culture, minorityRights;
