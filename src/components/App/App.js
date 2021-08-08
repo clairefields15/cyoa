@@ -19,15 +19,21 @@ export const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [favorites, setFavorites] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  const [showLikeModal, setShowLikeModal] = useState(false);
+  const [showDislikeModal, setShowDislikeModal] = useState(false);
+  const [dislikedCities, setDislikedCities] = useState([]);
 
   useEffect(() => {
+    // to add local storage:
+    // pull the disliked cities list out of local storage
+    // fetch all cities
     const fetchCities = async () => {
       setIsLoading(true);
       setErrorMessage('');
-      //maybe all cities don't need to be in state??
       try {
         let data = await fetchAllCities();
+        // filter through the data for cities that !== the disliked cities
+        // remove the disliked cities from allCities before setting in state
         setAllCities(data);
       } catch (error) {
         setErrorMessage(error.message);
@@ -60,7 +66,8 @@ export const App = () => {
   useEffect(() => {
     if (cityImage) {
       setIsLoading(false);
-      setShowModal(false);
+      setShowLikeModal(false);
+      setShowDislikeModal(false);
       window.scrollTo(0, 0);
     }
   }, [cityImage]);
@@ -69,7 +76,7 @@ export const App = () => {
     const duplicate = favorites.find(favorite => favorite.name === cityName);
 
     if (!duplicate) {
-      await showModalTimeout(1000);
+      await showModalTimeout(setShowLikeModal, 1000);
       let city = {
         name: cityName,
         details: cityDetails,
@@ -79,22 +86,27 @@ export const App = () => {
       const newCitiesArray = allCities.filter(city => city.name !== cityName);
       setAllCities(newCitiesArray);
     } else {
-      console.log('duplicate');
       return;
     }
   };
 
-  const removeFromCities = async () => {};
+  const removeFromCities = async () => {
+    await showModalTimeout(setShowDislikeModal, 1000);
+    setDislikedCities([...dislikedCities, cityName]);
+    // set this array in local storage!!
+    const newCitiesArray = allCities.filter(city => city.name !== cityName);
+    setAllCities(newCitiesArray);
+  };
 
-  const showModalTimeout = ms => {
-    setShowModal(true);
+  const showModalTimeout = (whichModal, ms) => {
+    whichModal(true);
     return new Promise(resolve => setTimeout(resolve, ms));
   };
 
   return (
     <>
       <ScrollToTop />
-      {!showModal && <Logo />}
+      {!showLikeModal && !showDislikeModal && <Logo />}
       <Nav
         addToFavorites={addToFavorites}
         removeFromCities={removeFromCities}
@@ -105,8 +117,13 @@ export const App = () => {
       {!!errorMessage && !isLoading && (
         <ErrorComponent errorMessage={errorMessage} />
       )}
-      {showModal && <Modal />}
-      {!errorMessage && !isLoading && !showModal && (
+      {showLikeModal && (
+        <Modal
+          message={'City added to favorites... finding your next city now!'}
+        />
+      )}
+      {showDislikeModal && <Modal message={"You won't see that city again"} />}
+      {!errorMessage && !isLoading && !showLikeModal && !showDislikeModal && (
         <>
           <Switch>
             <Route

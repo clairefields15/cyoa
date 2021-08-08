@@ -12,22 +12,13 @@ export const Nav = ({
   const [disableButton, setDisableButton] = useState(false);
 
   const handleLike = async e => {
-    console.log('hi');
     e.preventDefault();
     setDisableButton(true);
     await addToFavorites();
     setDisableButton(false);
   };
 
-  // when the user clicks NOPE
-  // the button should be disabled
-  // call a fn in App
-  // should see some text, saying you won't see this city again
-  // the city should be removed from the array of cities in state
-
   const handleDislike = async e => {
-    console.log('hi');
-
     e.preventDefault();
     setDisableButton(true);
     await removeFromCities();
@@ -37,10 +28,16 @@ export const Nav = ({
     <>
       {pathname === '/' && (
         <nav>
-          <button className='nav-button' id='nope-btn' disabled={disableButton}>
+          <button
+            className='nav-button'
+            id='nope-btn'
+            disabled={disableButton}
+            onClick={handleDislike}
+          >
             <span className='fas fa-times-circle'></span>
             Nope
           </button>
+
           <NavLink
             to='/favorites'
             exact
@@ -56,6 +53,7 @@ export const Nav = ({
               Favorites
             </button>
           </NavLink>
+
           <button
             className='nav-button'
             onClick={e => handleLike(e)}
@@ -67,6 +65,7 @@ export const Nav = ({
           </button>
         </nav>
       )}
+
       {pathname !== '/' && (
         <nav>
           <NavLink
