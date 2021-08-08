@@ -18,6 +18,13 @@ export const Nav = ({ addToFavorites, favorites, cityName }) => {
     await addToFavorites();
     setDisableButton(false);
   };
+
+  // when the user clicks NOPE
+  // the button should be disabled
+
+  // should see some text, saying you won't see this city again
+  // the city should be removed from the array of cities in state
+
   return (
     <>
       {pathname === '/' && (
