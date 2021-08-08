@@ -1,0 +1,16 @@
+.favorite-card {
+  height: 100%;
+  width: 100%;
+  border: 1px solid red;
+}
+
+.favorite-card > .img-container {
+  position: relative;
+  height: 100%;
+}
+/* 
+.favorite-card > .city-name {
+  position: absolute;
+  top: 0;
+  left: 0;
+} */

@@ -1,0 +1,13 @@
+.favorites-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  gap: 1.5em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  margin-bottom: 5em;
+}
+
+.your-favs {
+  text-align: center;
+  padding: 1em;
+}
