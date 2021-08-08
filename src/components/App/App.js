@@ -5,8 +5,8 @@ import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 import { Favorites } from '../Favorites/Favorites';
 import { ScrollToTop } from '../../helper-fns/ScrollToTop';
 import { fetchAllCities, fetchCity } from '../../helper-fns/apiCalls';
-import { Logo } from '../Logo/Logo';
-import { Nav } from '../Nav/Nav';
+import { Header } from '../Header/Header';
+import { TapBar } from '../TapBar/TapBar';
 import { Modal } from '../Modal/Modal';
 import { Details } from '../Details/Details';
 import './App.css';
@@ -106,13 +106,7 @@ export const App = () => {
   return (
     <>
       <ScrollToTop />
-      {!showLikeModal && !showDislikeModal && <Logo />}
-      <Nav
-        addToFavorites={addToFavorites}
-        removeFromCities={removeFromCities}
-        favorites={favorites}
-        cityName={cityName}
-      />
+      {!showLikeModal && !showDislikeModal && <Header />}
       {!errorMessage && isLoading && <h2>Loading...</h2>}
       {!!errorMessage && !isLoading && (
         <ErrorComponent errorMessage={errorMessage} />
@@ -160,6 +154,12 @@ export const App = () => {
           </Switch>
         </>
       )}
+      <TapBar
+        addToFavorites={addToFavorites}
+        removeFromCities={removeFromCities}
+        favorites={favorites}
+        cityName={cityName}
+      />
     </>
   );
 };
