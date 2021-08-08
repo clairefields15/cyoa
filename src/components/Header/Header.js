@@ -7,21 +7,24 @@ export const Header = () => {
   const { pathname } = useLocation();
 
   return (
-    <header className='logo-container'>
-      <img src={logo} alt='compass logo' className='logo-img' />
-      <h1>CYOA</h1>
+    <header>
+      <div className='logo'>
+        <img src={logo} alt='compass logo' className='logo-img' />
+        <h1>CYOA</h1>
+      </div>
       <nav>
         {pathname === '/' && (
-          <NavLink to='/favorites' exact>
+          <NavLink to='/favorites' exact className='link'>
             <button className='nav-button' id='favorites-btn'>
-              <span className='fas fa-user'></span>
+              {/* <span className='fas fa-user'></span> */}
+              <span class='fas fa-star'></span>
               Favorites
             </button>
           </NavLink>
         )}
 
         {pathname !== '/' && (
-          <NavLink to='/' id='explore-btn' exact>
+          <NavLink to='/' id='explore-btn' exact className='link'>
             <span className='fas fa-home'></span> Explore
           </NavLink>
         )}
