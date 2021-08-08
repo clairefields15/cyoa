@@ -6,6 +6,8 @@ import { Favorites } from '../Favorites/Favorites';
 import { ScrollToTop } from '../../helper-fns/ScrollToTop';
 import { fetchAllCities, fetchCity } from '../../helper-fns/apiCalls';
 import { Logo } from '../Logo/Logo';
+import { Nav } from '../Nav/Nav';
+import { Modal } from '../Modal/Modal';
 import './App.css';
 
 export const App = () => {
@@ -15,6 +17,8 @@ export const App = () => {
   const [cityImage, setCityImage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+  const [favorites, setFavorites] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -55,39 +59,77 @@ export const App = () => {
   useEffect(() => {
     if (cityImage) {
       setIsLoading(false);
+      setShowModal(false);
+      window.scrollTo(0, 0);
     }
   }, [cityImage]);
+
+  const addToFavorites = async e => {
+    const duplicate = favorites.find(favorite => favorite.name === cityName);
+
+    if (!duplicate) {
+      await showModalTimeout(1000);
+      let city = {
+        name: cityName,
+        details: cityDetails,
+        image: cityImage
+      };
+      setFavorites([...favorites, city]);
+      const newCitiesArray = allCities.filter(city => city.name !== cityName);
+      setAllCities(newCitiesArray);
+    } else {
+      console.log('duplicate');
+      return;
+    }
+  };
+
+  const showModalTimeout = ms => {
+    setShowModal(true);
+    return new Promise(resolve => setTimeout(resolve, ms));
+  };
 
   return (
     <>
       <ScrollToTop />
-      <Logo />
+      {!showModal && <Logo />}
+      <Nav
+        addToFavorites={addToFavorites}
+        favorites={favorites}
+        cityName={cityName}
+      />
       {!errorMessage && isLoading && <h2>Loading...</h2>}
       {!!errorMessage && !isLoading && (
         <ErrorComponent errorMessage={errorMessage} />
       )}
-      {!errorMessage && !isLoading && (
-        <Switch>
-          <Route
-            exact
-            path='/'
-            render={() => (
-              <Main
-                cityName={cityName}
-                cityDetails={cityDetails}
-                cityImage={cityImage}
-              />
-            )}
-          />
+      {showModal && <Modal />}
+      {!errorMessage && !isLoading && !showModal && (
+        <>
+          <Switch>
+            <Route
+              exact
+              path='/'
+              render={() => (
+                <Main
+                  cityName={cityName}
+                  cityDetails={cityDetails}
+                  cityImage={cityImage}
+                />
+              )}
+            />
 
-          <Route exact path='/favorites' render={() => <Favorites />} />
+            <Route
+              exact
+              path='/favorites'
+              render={() => <Favorites favorites={favorites} />}
+            />
 
-          <Route
-            render={() => (
-              <ErrorComponent errorMessage="Sorry that page doesn't exist, would you like to go home?" />
-            )}
-          />
-        </Switch>
+            <Route
+              render={() => (
+                <ErrorComponent errorMessage="Sorry that page doesn't exist, would you like to go home?" />
+              )}
+            />
+          </Switch>
+        </>
       )}
     </>
   );
