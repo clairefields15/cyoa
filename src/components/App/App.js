@@ -65,7 +65,7 @@ export const App = () => {
     }
   }, [cityImage]);
 
-  const addToFavorites = async e => {
+  const addToFavorites = async () => {
     const duplicate = favorites.find(favorite => favorite.name === cityName);
 
     if (!duplicate) {
@@ -84,6 +84,8 @@ export const App = () => {
     }
   };
 
+  const removeFromCities = async () => {};
+
   const showModalTimeout = ms => {
     setShowModal(true);
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -95,6 +97,7 @@ export const App = () => {
       {!showModal && <Logo />}
       <Nav
         addToFavorites={addToFavorites}
+        removeFromCities={removeFromCities}
         favorites={favorites}
         cityName={cityName}
       />

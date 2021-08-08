@@ -28,6 +28,11 @@ nav {
   font-size: 1em;
 }
 
+.nav-button:disabled {
+  cursor: not-allowed;
+  color: grey;
+}
+
 .nav-icon[favorited] {
   background-color: purple;
   animation: fadeOut 3s;
