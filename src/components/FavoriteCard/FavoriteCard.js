@@ -4,7 +4,7 @@ import './FavoriteCard.css';
 import likeRed from '../../images/likeRed.png';
 
 export const FavoriteCard = ({ favorite }) => {
-  let { name, details, image } = favorite;
+  let { name, image } = favorite;
 
   return (
     <NavLink to={`/favorites/${name}`} className='link'>
