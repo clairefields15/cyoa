@@ -8,6 +8,7 @@ import { fetchAllCities, fetchCity } from '../../helper-fns/apiCalls';
 import { Logo } from '../Logo/Logo';
 import { Nav } from '../Nav/Nav';
 import { Modal } from '../Modal/Modal';
+import { Details } from '../Details/Details';
 import './App.css';
 
 export const App = () => {
@@ -121,6 +122,14 @@ export const App = () => {
               exact
               path='/favorites'
               render={() => <Favorites favorites={favorites} />}
+            />
+
+            <Route
+              path='/favorites/:name'
+              render={({ match }) => {
+                const { name } = match.params;
+                return <Details name={name} />;
+              }}
             />
 
             <Route
