@@ -1,16 +1,32 @@
 .favorite-card {
-  height: 100%;
   width: 100%;
-  border: 1px solid red;
+  height: 10em;
+  box-shadow: 2px 5px 10px grey;
 }
 
-.favorite-card > .img-container {
-  position: relative;
+.img-container-fav {
   height: 100%;
+  width: 100%;
+  position: relative;
 }
-/* 
-.favorite-card > .city-name {
+
+.city-img-fav {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.city-name-fav {
   position: absolute;
-  top: 0;
-  left: 0;
-} */
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 100%;
+  padding: 0.5em;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  margin: 0;
+  padding: 0;
+}

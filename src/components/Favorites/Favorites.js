@@ -6,12 +6,13 @@ export const Favorites = ({ favorites }) => {
   const makeCards = () => {
     if (favorites.length) {
       return favorites.map(favorite => {
-        console.log(favorite);
         return <FavoriteCard key={favorite.name} favorite={favorite} />;
       });
     } else {
       return (
-        <p>You don't have any favorites yet, click "Explore" to get started!</p>
+        <p className='your-favs'>
+          You don't have any favorites yet, click Explore to get started!
+        </p>
       );
     }
   };
