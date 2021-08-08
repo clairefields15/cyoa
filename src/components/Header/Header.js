@@ -16,7 +16,7 @@ export const Header = () => {
         {pathname === '/' && (
           <NavLink to='/favorites' exact className='link'>
             <button className='nav-button' id='favorites-btn'>
-              <span class='fas fa-star'></span>
+              <span className='fas fa-star'></span>
               Favorites
             </button>
           </NavLink>

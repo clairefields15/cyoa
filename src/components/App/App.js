@@ -116,7 +116,11 @@ export const App = () => {
           message={`${cityName} added to favorites... finding your next city now!`}
         />
       )}
-      {showDislikeModal && <Modal message={"You won't see that city again"} />}
+      {showDislikeModal && (
+        <Modal
+          message={`You won't see that city again... finding your next city now!`}
+        />
+      )}
       {!errorMessage && !isLoading && !showLikeModal && !showDislikeModal && (
         <>
           <Switch>
@@ -157,8 +161,6 @@ export const App = () => {
       <TapBar
         addToFavorites={addToFavorites}
         removeFromCities={removeFromCities}
-        favorites={favorites}
-        cityName={cityName}
       />
     </>
   );

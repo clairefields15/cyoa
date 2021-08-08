@@ -2,11 +2,25 @@
   height: 100vh;
   width: 100vw;
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: rgb(161, 36, 99);
-  font-size: 2em;
+  background-color: white;
+  color: black;
+  font-size: 1.75em;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   justify-content: center;
+  padding: 1em;
+}
+
+.loading-dots {
+  height: 2em;
+  width: auto;
+}
+
+.logo-container-modal {
+  position: fixed;
+  top: 10px;
+  display: flex;
+  color: #5894cd;
 }
