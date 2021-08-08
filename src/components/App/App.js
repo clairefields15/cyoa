@@ -50,10 +50,10 @@ export const App = () => {
         try {
           let randomCity =
             allCities[Math.floor(Math.random() * allCities.length)];
-          setCityName(randomCity.name);
           let cityDetails = await fetchCity(randomCity.href);
           setCityDetails(cityDetails[0]);
           setCityImage(cityDetails[1]);
+          setCityName(randomCity.name);
         } catch (error) {
           setErrorMessage(error.message);
           setIsLoading(false);
@@ -119,7 +119,7 @@ export const App = () => {
       )}
       {showLikeModal && (
         <Modal
-          message={'City added to favorites... finding your next city now!'}
+          message={`${cityName} added to favorites... finding your next city now!`}
         />
       )}
       {showDislikeModal && <Modal message={"You won't see that city again"} />}
