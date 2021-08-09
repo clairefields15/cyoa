@@ -1,12 +1,22 @@
 import React from 'react';
-import likeRed from '../../images/likeRed.png';
 import './Modal.css';
+import loading from '../../images/loading.gif';
+import logo from '../../images/logo.png';
 
-export const Modal = () => {
+export const Modal = ({ message }) => {
   return (
     <div className='modal'>
-      City added to favorites!
-      <img src={likeRed} alt='filled heart' className='in-favs' />
+      <div className='logo-container-modal'>
+        <img
+          src={logo}
+          alt='compass logo'
+          className='logo-img'
+          id='logoModal'
+        />
+        <h2>CYOA</h2>
+      </div>
+      {message}
+      <img src={loading} alt='loading...' className='loading-dots' />
     </div>
   );
 };

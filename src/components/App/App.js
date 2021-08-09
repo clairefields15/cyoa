@@ -5,8 +5,8 @@ import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 import { Favorites } from '../Favorites/Favorites';
 import { ScrollToTop } from '../../helper-fns/ScrollToTop';
 import { fetchAllCities, fetchCity } from '../../helper-fns/apiCalls';
-import { Logo } from '../Logo/Logo';
-import { Nav } from '../Nav/Nav';
+import { Header } from '../Header/Header';
+import { TapBar } from '../TapBar/TapBar';
 import { Modal } from '../Modal/Modal';
 import { Details } from '../Details/Details';
 import './App.css';
@@ -19,15 +19,21 @@ export const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [favorites, setFavorites] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  const [showLikeModal, setShowLikeModal] = useState(false);
+  const [showDislikeModal, setShowDislikeModal] = useState(false);
+  const [dislikedCities, setDislikedCities] = useState([]);
 
   useEffect(() => {
+    // to add local storage:
+    // pull the disliked cities list out of local storage
+    // fetch all cities
     const fetchCities = async () => {
       setIsLoading(true);
       setErrorMessage('');
-      //maybe all cities don't need to be in state??
       try {
         let data = await fetchAllCities();
+        // filter through the data for cities that !== the disliked cities
+        // remove the disliked cities from allCities before setting in state
         setAllCities(data);
       } catch (error) {
         setErrorMessage(error.message);
@@ -44,10 +50,10 @@ export const App = () => {
         try {
           let randomCity =
             allCities[Math.floor(Math.random() * allCities.length)];
-          setCityName(randomCity.name);
           let cityDetails = await fetchCity(randomCity.href);
           setCityDetails(cityDetails[0]);
           setCityImage(cityDetails[1]);
+          setCityName(randomCity.name);
         } catch (error) {
           setErrorMessage(error.message);
           setIsLoading(false);
@@ -60,16 +66,17 @@ export const App = () => {
   useEffect(() => {
     if (cityImage) {
       setIsLoading(false);
-      setShowModal(false);
+      setShowLikeModal(false);
+      setShowDislikeModal(false);
       window.scrollTo(0, 0);
     }
   }, [cityImage]);
 
-  const addToFavorites = async e => {
+  const addToFavorites = async () => {
     const duplicate = favorites.find(favorite => favorite.name === cityName);
 
     if (!duplicate) {
-      await showModalTimeout(1000);
+      await showModalTimeout(setShowLikeModal, 1000);
       let city = {
         name: cityName,
         details: cityDetails,
@@ -79,31 +86,42 @@ export const App = () => {
       const newCitiesArray = allCities.filter(city => city.name !== cityName);
       setAllCities(newCitiesArray);
     } else {
-      console.log('duplicate');
       return;
     }
   };
 
-  const showModalTimeout = ms => {
-    setShowModal(true);
+  const removeFromCities = async () => {
+    await showModalTimeout(setShowDislikeModal, 1000);
+    setDislikedCities([...dislikedCities, cityName]);
+    // set this array in local storage!!
+    const newCitiesArray = allCities.filter(city => city.name !== cityName);
+    setAllCities(newCitiesArray);
+  };
+
+  const showModalTimeout = (whichModal, ms) => {
+    whichModal(true);
     return new Promise(resolve => setTimeout(resolve, ms));
   };
 
   return (
     <>
       <ScrollToTop />
-      {!showModal && <Logo />}
-      <Nav
-        addToFavorites={addToFavorites}
-        favorites={favorites}
-        cityName={cityName}
-      />
+      {!showLikeModal && !showDislikeModal && <Header />}
       {!errorMessage && isLoading && <h2>Loading...</h2>}
       {!!errorMessage && !isLoading && (
         <ErrorComponent errorMessage={errorMessage} />
       )}
-      {showModal && <Modal />}
-      {!errorMessage && !isLoading && !showModal && (
+      {showLikeModal && (
+        <Modal
+          message={`${cityName} added to favorites... finding your next city now!`}
+        />
+      )}
+      {showDislikeModal && (
+        <Modal
+          message={`You won't see that city again... finding your next city now!`}
+        />
+      )}
+      {!errorMessage && !isLoading && !showLikeModal && !showDislikeModal && (
         <>
           <Switch>
             <Route
@@ -140,6 +158,10 @@ export const App = () => {
           </Switch>
         </>
       )}
+      <TapBar
+        addToFavorites={addToFavorites}
+        removeFromCities={removeFromCities}
+      />
     </>
   );
 };

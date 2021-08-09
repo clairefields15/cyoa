@@ -33,7 +33,7 @@
   padding: 0;
 }
 
-.in-favs {
-  height: 1em;
-  padding-right: 1em;
+.fav-heart {
+  color: red;
+  padding-right: 0.5em;
 }

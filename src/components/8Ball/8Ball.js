@@ -25,7 +25,6 @@ export const EightBall = ({ cityName }) => {
     try {
       let answer = await fetchMessage('Should I move?');
       setMessage(answer);
-      setShaking(false);
     } catch (err) {
       setError(err.message);
     }
@@ -35,6 +34,12 @@ export const EightBall = ({ cityName }) => {
     setShaking(true);
     return new Promise(resolve => setTimeout(resolve, ms));
   };
+
+  useEffect(() => {
+    if (message) {
+      setShaking(false);
+    }
+  }, [message]);
 
   return (
     <section className='magic-8-ball'>

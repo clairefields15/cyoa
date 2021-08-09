@@ -1,9 +1,17 @@
-.logo-container {
+header {
   display: flex;
-  height: 2.5em;
+  height: 4em;
   background-color: #5894cd;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+.logo {
+  display: flex;
+}
+
+nav {
+  display: flex;
 }
 
 .logo-img {
@@ -14,4 +22,8 @@
 h1 {
   font-size: 2em;
   color: white;
+}
+
+.link {
+  text-decoration: none;
 }
