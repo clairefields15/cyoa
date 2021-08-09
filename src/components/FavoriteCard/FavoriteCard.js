@@ -3,14 +3,10 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import './FavoriteCard.css';
 
-export const FavoriteCard = ({ favorite }) => {
+export const FavoriteCard = ({ favorite, removeFromFavorites }) => {
   const [hover, setHover] = useState(false);
   const [imageHover, setImageHover] = useState(false);
   let { name, image } = favorite;
-
-  const handleClick = () => {
-    console.log('detele!');
-  };
 
   return (
     <section className='card'>
@@ -22,7 +18,7 @@ export const FavoriteCard = ({ favorite }) => {
           aria-label={`Remove ${name} from favorites`}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
-          onClick={handleClick}
+          onClick={() => removeFromFavorites(name)}
         >
           {hover && (
             <>
@@ -70,5 +66,6 @@ export const FavoriteCard = ({ favorite }) => {
 };
 
 FavoriteCard.propTypes = {
-  favorite: PropTypes.object.isRequired
+  favorite: PropTypes.object.isRequired,
+  removeFromFavorites: PropTypes.func.isRequired
 };
