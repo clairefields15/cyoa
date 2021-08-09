@@ -1,30 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './TapBar.css';
 
 export const TapBar = ({ addToFavorites, removeFromCities }) => {
-  const [disableButton, setDisableButton] = useState(false);
-
   const handleLike = async e => {
     e.preventDefault();
-    setDisableButton(true);
-    await addToFavorites();
-    setDisableButton(false);
+    addToFavorites();
   };
 
   const handleDislike = async e => {
     e.preventDefault();
-    setDisableButton(true);
-    await removeFromCities();
-    setDisableButton(false);
+    removeFromCities();
   };
+
   return (
-    <div className='tap-bar'>
+    <section className='tap-bar'>
       <div className='dislike-bg'>
         <button
           className='nav-button'
           id='nope-btn'
-          disabled={disableButton}
-          onClick={handleDislike}
+          onClick={e => handleDislike(e)}
         >
           <span className='fas fa-times-circle'></span>
           Nope
@@ -34,13 +28,12 @@ export const TapBar = ({ addToFavorites, removeFromCities }) => {
         <button
           className='nav-button'
           onClick={e => handleLike(e)}
-          disabled={disableButton}
           id='like-btn'
         >
           <span className='fas fa-heart'></span>
           Like
         </button>
       </div>
-    </div>
+    </section>
   );
 };
