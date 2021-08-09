@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Modal.css';
 import loading from '../../images/loading.gif';
 import logo from '../../images/logo.png';
@@ -19,4 +20,8 @@ export const Modal = ({ message }) => {
       <img src={loading} alt='loading...' className='loading-dots' />
     </div>
   );
+};
+
+Modal.propTypes = {
+  message: PropTypes.string.isRequired
 };

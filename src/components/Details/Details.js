@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { CityImage } from '../CityImage/CityImage';
 import { Summary } from '../Summary/Summary';
 import { QualityOfLife } from '../QualityOfLife/QualityOfLife';
@@ -54,4 +55,8 @@ export const Details = ({ name }) => {
       )}
     </>
   );
+};
+
+Details.propTypes = {
+  name: PropTypes.string.isRequired
 };

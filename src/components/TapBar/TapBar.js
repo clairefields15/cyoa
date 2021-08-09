@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './TapBar.css';
 
 export const TapBar = ({ addToFavorites, removeFromCities }) => {
@@ -32,4 +33,9 @@ export const TapBar = ({ addToFavorites, removeFromCities }) => {
       </button>
     </section>
   );
+};
+
+TapBar.propTypes = {
+  addToFavorites: PropTypes.func.isRequired,
+  removeFromCities: PropTypes.func.isRequired
 };

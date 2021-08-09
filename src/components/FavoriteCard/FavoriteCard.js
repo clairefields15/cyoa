@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import './FavoriteCard.css';
 
@@ -24,4 +25,8 @@ export const FavoriteCard = ({ favorite }) => {
       </div>
     </NavLink>
   );
+};
+
+FavoriteCard.propTypes = {
+  favorite: PropTypes.object.isRequired
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FavoriteCard } from '../FavoriteCard/FavoriteCard';
 import './Favorites.css';
 
@@ -22,4 +23,8 @@ export const Favorites = ({ favorites }) => {
       <section className='favorites-container'>{makeCards()}</section>
     </>
   );
+};
+
+Favorites.propTypes = {
+  favorites: PropTypes.array.isRequired
 };
