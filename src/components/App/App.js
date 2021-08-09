@@ -23,6 +23,7 @@ export const App = () => {
   const [showLikeModal, setShowLikeModal] = useState(false);
   const [showDislikeModal, setShowDislikeModal] = useState(false);
   const [dislikedCities, setDislikedCities] = useState([]);
+  const [noCitiesLeft, setNoCitiesLeft] = useState(false);
 
   useEffect(() => {
     // to add local storage:
@@ -45,7 +46,7 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
-    if (allCities.length) {
+    if (allCities.length > 1) {
       const fetchDetails = async () => {
         setErrorMessage('');
         try {
@@ -55,6 +56,23 @@ export const App = () => {
           setCityDetails(cityDetails[0]);
           setCityImage(cityDetails[1]);
           setCityName(randomCity.name);
+        } catch (error) {
+          setErrorMessage(error.message);
+          setIsLoading(false);
+        }
+      };
+      fetchDetails();
+    } else if (allCities.length === 1) {
+      const fetchDetails = async () => {
+        setErrorMessage('');
+        try {
+          let randomCity =
+            allCities[Math.floor(Math.random() * allCities.length)];
+          let cityDetails = await fetchCity(randomCity.href);
+          setCityDetails(cityDetails[0]);
+          setCityImage(cityDetails[1]);
+          setCityName(randomCity.name);
+          setNoCitiesLeft(true);
         } catch (error) {
           setErrorMessage(error.message);
           setIsLoading(false);
@@ -108,6 +126,11 @@ export const App = () => {
     <>
       <ScrollToTop />
       {!showLikeModal && !showDislikeModal && <Header />}
+      {noCitiesLeft && !isLoading && (
+        <div className='loading-container'>
+          <h2>No cities left! Hope you found one.</h2>
+        </div>
+      )}
       {!errorMessage && isLoading && (
         <div className='loading-container'>
           <h2>Adventure loading</h2>
@@ -125,45 +148,49 @@ export const App = () => {
       {showDislikeModal && (
         <Modal message={`You won't see that city again... finding another.`} />
       )}
-      {!errorMessage && !isLoading && !showLikeModal && !showDislikeModal && (
-        <>
-          <Switch>
-            <Route
-              exact
-              path='/'
-              render={() => (
-                <Main
-                  cityName={cityName}
-                  cityDetails={cityDetails}
-                  cityImage={cityImage}
-                  addToFavorites={addToFavorites}
-                  removeFromCities={removeFromCities}
-                />
-              )}
-            />
+      {!errorMessage &&
+        !isLoading &&
+        !showLikeModal &&
+        !showDislikeModal &&
+        !noCitiesLeft && (
+          <>
+            <Switch>
+              <Route
+                exact
+                path='/'
+                render={() => (
+                  <Main
+                    cityName={cityName}
+                    cityDetails={cityDetails}
+                    cityImage={cityImage}
+                    addToFavorites={addToFavorites}
+                    removeFromCities={removeFromCities}
+                  />
+                )}
+              />
 
-            <Route
-              exact
-              path='/favorites'
-              render={() => <Favorites favorites={favorites} />}
-            />
+              <Route
+                exact
+                path='/favorites'
+                render={() => <Favorites favorites={favorites} />}
+              />
 
-            <Route
-              path='/favorites/:name'
-              render={({ match }) => {
-                const { name } = match.params;
-                return <Details name={name} />;
-              }}
-            />
+              <Route
+                path='/favorites/:name'
+                render={({ match }) => {
+                  const { name } = match.params;
+                  return <Details name={name} />;
+                }}
+              />
 
-            <Route
-              render={() => (
-                <ErrorComponent errorMessage="Sorry, that page doesn't exist, would you like to go home?" />
-              )}
-            />
-          </Switch>
-        </>
-      )}
+              <Route
+                render={() => (
+                  <ErrorComponent errorMessage="Sorry, that page doesn't exist, would you like to go home?" />
+                )}
+              />
+            </Switch>
+          </>
+        )}
     </>
   );
 };
