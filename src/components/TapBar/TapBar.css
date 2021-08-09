@@ -21,6 +21,7 @@
 
 .nav-button:hover {
   font-size: 1.2em;
+  cursor: pointer;
 }
 
 .dislike-bg {
