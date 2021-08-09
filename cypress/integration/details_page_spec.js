@@ -112,4 +112,12 @@ describe('Click favorites card to view details', () => {
     cy.visit('http://localhost:3000/favorites/Aarhus');
     cy.contains('Something went wrong');
   });
+
+  it('should be able to remove a city from the favorites page', () => {
+    cy.get('.remove-btn').click();
+    cy.get('.city-name-fav').should('not.exist');
+    cy.contains(
+      "You don't have any favorites yet, click Explore to get started!"
+    );
+  });
 });
