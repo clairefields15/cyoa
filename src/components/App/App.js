@@ -65,7 +65,7 @@ export const App = () => {
   }, [allCities]);
 
   useEffect(() => {
-    if (Object.keys(cityImage).length !== 0) {
+    if (Object.keys(cityImage).length) {
       window.scrollTo(0, 0);
       setIsLoading(false);
       setShowLikeModal(false);

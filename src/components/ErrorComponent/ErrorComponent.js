@@ -5,7 +5,7 @@ import './ErrorComponent.css';
 
 export const ErrorComponent = ({ errorMessage }) => {
   return (
-    <div className='error-page'>
+    <section className='error-page'>
       <h2 className='error-message'>{errorMessage}</h2>
       {errorMessage ===
         "Sorry, that page doesn't exist, would you like to go home?" && (
@@ -13,7 +13,7 @@ export const ErrorComponent = ({ errorMessage }) => {
           <button className='error-home-btn'>Home</button>
         </NavLink>
       )}
-    </div>
+    </section>
   );
 };
 
