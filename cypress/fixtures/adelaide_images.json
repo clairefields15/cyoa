@@ -1,0 +1,53 @@
+{
+  "_links": {
+    "curies": [
+      {
+        "href": "https://developers.teleport.org/api/resources/Location/#!/relations/{rel}/",
+        "name": "location",
+        "templated": true
+      },
+      {
+        "href": "https://developers.teleport.org/api/resources/City/#!/relations/{rel}/",
+        "name": "city",
+        "templated": true
+      },
+      {
+        "href": "https://developers.teleport.org/api/resources/UrbanArea/#!/relations/{rel}/",
+        "name": "ua",
+        "templated": true
+      },
+      {
+        "href": "https://developers.teleport.org/api/resources/Country/#!/relations/{rel}/",
+        "name": "country",
+        "templated": true
+      },
+      {
+        "href": "https://developers.teleport.org/api/resources/Admin1Division/#!/relations/{rel}/",
+        "name": "a1",
+        "templated": true
+      },
+      {
+        "href": "https://developers.teleport.org/api/resources/Timezone/#!/relations/{rel}/",
+        "name": "tz",
+        "templated": true
+      }
+    ],
+    "self": {
+      "href": "https://api.teleport.org/api/urban_areas/slug:adelaide/images/"
+    }
+  },
+  "photos": [
+    {
+      "attribution": {
+        "license": "Attribution 2.0 Generic (CC BY 2.0)",
+        "photographer": "Stebbing",
+        "site": "Flickr",
+        "source": "https://www.flickr.com/photos/stebbing/21537492685/"
+      },
+      "image": {
+        "mobile": "https://d13k13wj6adfdf.cloudfront.net/urban_areas/adelaide-3b1b936db3.jpg",
+        "web": "https://d13k13wj6adfdf.cloudfront.net/urban_areas/adelaide_web-e462ed5b74.jpg"
+      }
+    }
+  ]
+}
