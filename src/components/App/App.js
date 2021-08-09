@@ -9,7 +9,6 @@ import { Header } from '../Header/Header';
 import { Modal } from '../Modal/Modal';
 import { Details } from '../Details/Details';
 import loading from '../../images/loading.gif';
-
 import './App.css';
 
 export const App = () => {
@@ -107,6 +106,11 @@ export const App = () => {
     }
   };
 
+  const removeFromFavorites = cityName => {
+    let newFavs = favorites.filter(city => city.name !== cityName);
+    setFavorites(newFavs);
+  };
+
   const removeFromCities = async () => {
     await showModalTimeout(setShowDislikeModal, 1500);
     setDislikedCities([...dislikedCities, cityName]);
@@ -161,7 +165,12 @@ export const App = () => {
             <Route
               exact
               path='/favorites'
-              render={() => <Favorites favorites={favorites} />}
+              render={() => (
+                <Favorites
+                  favorites={favorites}
+                  removeFromFavorites={removeFromFavorites}
+                />
+              )}
             />
 
             <Route
