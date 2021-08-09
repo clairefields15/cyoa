@@ -1,13 +1,27 @@
-.favorite-card {
-  width: 100%;
-  height: 10em;
+.card {
+  border: 1px solid grey;
   box-shadow: 2px 5px 10px grey;
+  height: 12em;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .img-container-fav {
-  height: 100%;
+  height: 10em;
   width: 100%;
   position: relative;
+}
+
+.hovered-text {
+  position: absolute;
+  color: black;
+  font-size: 1em;
+  background-color: inherit;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
 .city-img-fav {
@@ -17,13 +31,17 @@
   overflow: hidden;
 }
 
+.opaque {
+  opacity: 0.5;
+}
+
 .city-name-fav {
-  position: absolute;
-  background-color: rgba(255, 255, 255, 0.7);
   width: 100%;
+  height: 2em;
   padding: 0.5em;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .link {
@@ -35,5 +53,17 @@
 
 .fav-heart {
   color: red;
-  padding-right: 0.5em;
+}
+
+.remove-btn {
+  padding: 1em;
+  background-color: transparent;
+  border: none;
+  margin: none;
+  font-family: Helvetica, sans-serif;
+  display: flex;
+}
+
+.remove-btn:hover {
+  cursor: pointer;
 }

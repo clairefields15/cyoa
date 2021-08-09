@@ -4,6 +4,8 @@
   margin-right: auto;
   position: relative;
   margin-top: 1em;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .city-name {
@@ -19,6 +21,8 @@
 
 .show {
   display: block;
+  width: 100%;
+  height: auto;
 }
 
 .mobile-img {
@@ -36,5 +40,7 @@
 
   .web-img {
     display: block;
+    width: 100%;
+    height: auto;
   }
 }
