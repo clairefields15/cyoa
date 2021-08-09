@@ -14,26 +14,22 @@ export const TapBar = ({ addToFavorites, removeFromCities }) => {
 
   return (
     <section className='tap-bar'>
-      <div className='dislike-bg'>
-        <button
-          className='nav-button'
-          id='nope-btn'
-          onClick={e => handleDislike(e)}
-        >
-          <span className='fas fa-times-circle'></span>
-          Nope
-        </button>
-      </div>
-      <div className='like-bg'>
-        <button
-          className='nav-button'
-          onClick={e => handleLike(e)}
-          id='like-btn'
-        >
-          <span className='fas fa-heart'></span>
-          Like
-        </button>
-      </div>
+      <button
+        className='nav-button dislike-bg'
+        id='nope-btn'
+        onClick={e => handleDislike(e)}
+      >
+        <span className='fas fa-times-circle'></span>
+        Nope
+      </button>
+      <button
+        className='nav-button like-bg'
+        onClick={e => handleLike(e)}
+        id='like-btn'
+      >
+        <span className='fas fa-heart'></span>
+        Like
+      </button>
     </section>
   );
 };
