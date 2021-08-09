@@ -8,7 +8,7 @@
 }
 
 .dislike-bg {
-  background-color: red;
+  background-color: rgb(190, 10, 10);
   display: flex;
   align-items: center;
   justify-content: center;
