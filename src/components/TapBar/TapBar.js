@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import './TapBar.css';
 
 export const TapBar = ({ addToFavorites, removeFromCities }) => {
   const [disableButton, setDisableButton] = useState(false);
-  const { pathname } = useLocation();
 
   const handleLike = async e => {
     e.preventDefault();

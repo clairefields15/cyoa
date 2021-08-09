@@ -10,7 +10,6 @@ export const fetchAllCities = async () => {
 export const fetchCity = async url => {
   let scores = await fetchScores(url);
   let images = await fetchImages(url);
-  // let details = await fetchDetails(url);
   let values = await Promise.all([scores, images]);
   return values;
 };
@@ -26,14 +25,6 @@ export const fetchImages = async url => {
   let data = await checkForErrors(response);
   return data.photos[0].image.mobile;
 };
-
-// export const fetchDetails = async url => {
-//   let response = await fetch(`${url}details/`);
-//   let data = await checkForErrors(response);
-//   let cleaned = await cleanDetails(data.categories);
-//   console.log('clean', cleaned);
-//   return cleaned;
-// };
 
 export const fetchMessage = async message => {
   let params = encodeURIComponent(message);
