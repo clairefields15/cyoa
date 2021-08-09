@@ -8,6 +8,8 @@ import { fetchAllCities, fetchCity } from '../../helper-fns/apiCalls';
 import { Header } from '../Header/Header';
 import { Modal } from '../Modal/Modal';
 import { Details } from '../Details/Details';
+import loading from '../../images/loading.gif';
+
 import './App.css';
 
 export const App = () => {
@@ -106,7 +108,12 @@ export const App = () => {
     <>
       <ScrollToTop />
       {!showLikeModal && !showDislikeModal && <Header />}
-      {!errorMessage && isLoading && <h2>Loading...</h2>}
+      {!errorMessage && isLoading && (
+        <div className='loading-container'>
+          <h2>Adventure loading</h2>
+          <img src={loading} alt='loading...' className='loading-dots' />
+        </div>
+      )}
       {!!errorMessage && !isLoading && (
         <ErrorComponent errorMessage={errorMessage} />
       )}
