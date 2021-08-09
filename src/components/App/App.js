@@ -72,7 +72,6 @@ export const App = () => {
           setCityDetails(cityDetails[0]);
           setCityImage(cityDetails[1]);
           setCityName(randomCity.name);
-          setNoCitiesLeft(true);
         } catch (error) {
           setErrorMessage(error.message);
           setIsLoading(false);
@@ -126,11 +125,6 @@ export const App = () => {
     <>
       <ScrollToTop />
       {!showLikeModal && !showDislikeModal && <Header />}
-      {noCitiesLeft && !isLoading && (
-        <div className='loading-container'>
-          <h2>No cities left! Hope you found one.</h2>
-        </div>
-      )}
       {!errorMessage && isLoading && (
         <div className='loading-container'>
           <h2>Adventure loading</h2>
@@ -148,49 +142,45 @@ export const App = () => {
       {showDislikeModal && (
         <Modal message={`You won't see that city again... finding another.`} />
       )}
-      {!errorMessage &&
-        !isLoading &&
-        !showLikeModal &&
-        !showDislikeModal &&
-        !noCitiesLeft && (
-          <>
-            <Switch>
-              <Route
-                exact
-                path='/'
-                render={() => (
-                  <Main
-                    cityName={cityName}
-                    cityDetails={cityDetails}
-                    cityImage={cityImage}
-                    addToFavorites={addToFavorites}
-                    removeFromCities={removeFromCities}
-                  />
-                )}
-              />
+      {!errorMessage && !isLoading && !showLikeModal && !showDislikeModal && (
+        <>
+          <Switch>
+            <Route
+              exact
+              path='/'
+              render={() => (
+                <Main
+                  cityName={cityName}
+                  cityDetails={cityDetails}
+                  cityImage={cityImage}
+                  addToFavorites={addToFavorites}
+                  removeFromCities={removeFromCities}
+                />
+              )}
+            />
 
-              <Route
-                exact
-                path='/favorites'
-                render={() => <Favorites favorites={favorites} />}
-              />
+            <Route
+              exact
+              path='/favorites'
+              render={() => <Favorites favorites={favorites} />}
+            />
 
-              <Route
-                path='/favorites/:name'
-                render={({ match }) => {
-                  const { name } = match.params;
-                  return <Details name={name} />;
-                }}
-              />
+            <Route
+              path='/favorites/:name'
+              render={({ match }) => {
+                const { name } = match.params;
+                return <Details name={name} />;
+              }}
+            />
 
-              <Route
-                render={() => (
-                  <ErrorComponent errorMessage="Sorry, that page doesn't exist, would you like to go home?" />
-                )}
-              />
-            </Switch>
-          </>
-        )}
+            <Route
+              render={() => (
+                <ErrorComponent errorMessage="Sorry, that page doesn't exist, would you like to go home?" />
+              )}
+            />
+          </Switch>
+        </>
+      )}
     </>
   );
 };

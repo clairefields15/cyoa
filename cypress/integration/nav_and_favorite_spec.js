@@ -67,6 +67,38 @@ describe('Navigation and favoriting a city', () => {
       }
     );
     cy.get('[id=favorites-btn]').click();
+    cy.get('.city-name-fav').should('have.length', 1).should('be.visible');
+  });
+
+  it.only('Should be able to add a second city to my favorites list', () => {
+    cy.get('[id=like-btn]').click();
+    cy.contains('added to favorites... finding your next city now!');
+    cy.intercept('GET', 'https://api.teleport.org/api/urban_areas/', {
+      statusCode: 200,
+      fixture: 'allCities.json'
+    });
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/scores/',
+      {
+        statusCode: 200,
+        fixture: 'aarhus_scores.json'
+      }
+    );
+    cy.intercept(
+      'GET',
+      'https://api.teleport.org/api/urban_areas/slug:aarhus/images/',
+      {
+        statusCode: 200,
+        fixture: 'aarhus_images.json'
+      }
+    );
+    cy.get('[id=favorites-btn]').click();
     cy.get('.city-name-fav').should('be.visible');
+    cy.get('[id=explore-btn]').click();
+    cy.contains('Summary');
+    cy.get('[id=like-btn]').click();
+    cy.get('[id=favorites-btn]').click();
+    cy.get('.city-name-fav').should('have.length', 2).should('be.visible');
   });
 });
