@@ -12,25 +12,45 @@ export const Header = () => {
         <img src={logo} alt='compass logo' className='logo-img' />
         <h1>CYOA</h1>
       </div>
-      <nav>
-        {pathname === '/' && (
+
+      {pathname === '/' && (
+        <nav>
           <NavLink to='/favorites' exact className='link'>
             <button className='nav-button' id='favorites-btn'>
               <span className='fas fa-star'></span>
               Favorites
             </button>
           </NavLink>
-        )}
+        </nav>
+      )}
 
-        {pathname !== '/' && (
+      {pathname === '/favorites' && (
+        <nav>
           <NavLink to='/' id='explore-btn' exact className='link'>
             <button className='nav-button' id='favorites-btn'>
               <span className='fas fa-home'></span>
               Explore
             </button>
           </NavLink>
-        )}
-      </nav>
+        </nav>
+      )}
+
+      {pathname !== '/' && pathname !== '/favorites' && (
+        <nav>
+          <NavLink to='/' id='explore-btn' exact className='link'>
+            <button className='nav-button' id='favorites-btn'>
+              <span className='fas fa-home'></span>
+              Explore
+            </button>
+          </NavLink>
+          <NavLink to='/favorites' exact className='link fav-page-fav-btn'>
+            <button className='nav-button' id='favorites-btn'>
+              <span className='fas fa-star'></span>
+              Favorites
+            </button>
+          </NavLink>
+        </nav>
+      )}
     </header>
   );
 };

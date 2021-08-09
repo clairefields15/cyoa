@@ -27,3 +27,7 @@ h1 {
 .link {
   text-decoration: none;
 }
+
+.fav-page-fav-btn {
+  margin-left: 1em;
+}
