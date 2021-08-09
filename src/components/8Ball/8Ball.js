@@ -49,16 +49,28 @@ export const EightBall = ({ cityName }) => {
         Should I move to {cityName}?
       </button>
       {count === 0 && !error && (
-        <img src={eightBallFilled} alt='Magic 8 ball' />
+        <img
+          src={eightBallFilled}
+          alt='Magic 8 ball'
+          className='eight-ball-img'
+        />
       )}
 
       {shaking && !error && (
-        <img src={eightBallFilled} alt='Magic 8 ball' className='shaking' />
+        <img
+          src={eightBallFilled}
+          alt='Magic 8 ball'
+          className='shaking eight-ball-img'
+        />
       )}
 
       {!shaking && message && !error && (
         <>
-          <img src={eightBallBLUE} alt='Magic 8 ball with response' />
+          <img
+            src={eightBallBLUE}
+            alt='Magic 8 ball with response'
+            className='eight-ball-img'
+          />
           <div className='message-container'>
             <p className='message'>{message}</p>
           </div>
@@ -66,7 +78,11 @@ export const EightBall = ({ cityName }) => {
       )}
       {!!error && (
         <>
-          <img src={eightBallBLUE} alt='Magic 8 ball with response' />
+          <img
+            src={eightBallBLUE}
+            alt='Magic 8 ball with response'
+            className='eight-ball-img'
+          />
           <div className='message-container'>
             <p className='message' style={{ color: 'red' }}>
               {error}
