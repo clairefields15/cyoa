@@ -1,4 +1,4 @@
-describe('Navigation and favoriting a city', () => {
+describe('Navigation, liking and disliking cities', () => {
   beforeEach(() => {
     cy.intercept('GET', 'https://api.teleport.org/api/urban_areas/', {
       statusCode: 200,
@@ -98,7 +98,7 @@ describe('Navigation and favoriting a city', () => {
     cy.get('.city-name-fav').should('have.length', 2).should('be.visible');
   });
 
-  it.only('Should be able to dislike a city and see another one', () => {
+  it('Should be able to dislike a city and see another one', () => {
     cy.get('[id=nope-btn]').click();
     cy.contains("You won't see that city again");
     cy.intercept('GET', 'https://api.teleport.org/api/urban_areas/', {

@@ -23,7 +23,6 @@ export const App = () => {
   const [showLikeModal, setShowLikeModal] = useState(false);
   const [showDislikeModal, setShowDislikeModal] = useState(false);
   const [dislikedCities, setDislikedCities] = useState([]);
-  const [noCitiesLeft, setNoCitiesLeft] = useState(false);
 
   useEffect(() => {
     // to add local storage:
