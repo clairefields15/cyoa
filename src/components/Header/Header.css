@@ -3,15 +3,18 @@ header {
   height: 4em;
   background-color: #4277a8;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .logo {
   display: flex;
+  align-items: center;
+  padding-left: 1em;
 }
 
 nav {
   display: flex;
+  padding-right: 1em;
 }
 
 .logo-img {
@@ -29,5 +32,5 @@ h1 {
 }
 
 .fav-page-fav-btn {
-  margin-left: 1em;
+  margin-left: 0.5em;
 }
