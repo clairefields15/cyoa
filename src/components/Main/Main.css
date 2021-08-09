@@ -2,8 +2,3 @@ main {
   width: 100vw;
   min-height: 100vh;
 }
-
-.loading-msg {
-  margin-top: 10em;
-  color: red;
-}

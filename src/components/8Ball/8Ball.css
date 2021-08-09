@@ -11,7 +11,8 @@
   margin-bottom: 6em;
 }
 
-.magic-8-ball button {
+.magic-8-ball button,
+.error-home-btn {
   padding: 0.75em;
   font-size: 1em;
   border-radius: 4em;
@@ -21,7 +22,8 @@
   margin-top: 0.5em;
 }
 
-.magic-8-ball button:hover {
+.magic-8-ball button:hover,
+.error-home-btn {
   border: 1px solid #b6dcfe;
   background-color: #5894cd;
   cursor: pointer;

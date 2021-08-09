@@ -4,15 +4,26 @@ import { CityImage } from '../CityImage/CityImage';
 import { Summary } from '../Summary/Summary';
 import { QualityOfLife } from '../QualityOfLife/QualityOfLife';
 import { EightBall } from '../8Ball/8Ball';
+import { TapBar } from '../TapBar/TapBar';
 import './Main.css';
 
-export const Main = ({ cityName, cityDetails, cityImage }) => {
+export const Main = ({
+  cityName,
+  cityDetails,
+  cityImage,
+  addToFavorites,
+  removeFromCities
+}) => {
   return (
     <main>
       <CityImage cityImage={cityImage} cityName={cityName} />
       <Summary cityDetails={cityDetails} />
       <QualityOfLife cityDetails={cityDetails} />
       <EightBall cityName={cityName} />
+      <TapBar
+        addToFavorites={addToFavorites}
+        removeFromCities={removeFromCities}
+      />
     </main>
   );
 };
@@ -20,5 +31,5 @@ export const Main = ({ cityName, cityDetails, cityImage }) => {
 Main.propTypes = {
   cityName: PropTypes.string.isRequired,
   cityDetails: PropTypes.object.isRequired,
-  cityImage: PropTypes.string.isRequired
+  cityImage: PropTypes.object.isRequired
 };

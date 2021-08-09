@@ -6,16 +6,17 @@ import { Favorites } from '../Favorites/Favorites';
 import { ScrollToTop } from '../../helper-fns/ScrollToTop';
 import { fetchAllCities, fetchCity } from '../../helper-fns/apiCalls';
 import { Header } from '../Header/Header';
-import { TapBar } from '../TapBar/TapBar';
 import { Modal } from '../Modal/Modal';
 import { Details } from '../Details/Details';
+import loading from '../../images/loading.gif';
+
 import './App.css';
 
 export const App = () => {
   const [allCities, setAllCities] = useState([]);
   const [cityName, setCityName] = useState('');
   const [cityDetails, setCityDetails] = useState({});
-  const [cityImage, setCityImage] = useState('');
+  const [cityImage, setCityImage] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [favorites, setFavorites] = useState([]);
@@ -64,11 +65,11 @@ export const App = () => {
   }, [allCities]);
 
   useEffect(() => {
-    if (cityImage) {
+    if (Object.keys(cityImage).length) {
+      window.scrollTo(0, 0);
       setIsLoading(false);
       setShowLikeModal(false);
       setShowDislikeModal(false);
-      window.scrollTo(0, 0);
     }
   }, [cityImage]);
 
@@ -76,7 +77,7 @@ export const App = () => {
     const duplicate = favorites.find(favorite => favorite.name === cityName);
 
     if (!duplicate) {
-      await showModalTimeout(setShowLikeModal, 1000);
+      await showModalTimeout(setShowLikeModal, 1500);
       let city = {
         name: cityName,
         details: cityDetails,
@@ -91,7 +92,7 @@ export const App = () => {
   };
 
   const removeFromCities = async () => {
-    await showModalTimeout(setShowDislikeModal, 1000);
+    await showModalTimeout(setShowDislikeModal, 1500);
     setDislikedCities([...dislikedCities, cityName]);
     // set this array in local storage!!
     const newCitiesArray = allCities.filter(city => city.name !== cityName);
@@ -107,7 +108,12 @@ export const App = () => {
     <>
       <ScrollToTop />
       {!showLikeModal && !showDislikeModal && <Header />}
-      {!errorMessage && isLoading && <h2>Loading...</h2>}
+      {!errorMessage && isLoading && (
+        <div className='loading-container'>
+          <h2>Adventure loading</h2>
+          <img src={loading} alt='loading...' className='loading-dots' />
+        </div>
+      )}
       {!!errorMessage && !isLoading && (
         <ErrorComponent errorMessage={errorMessage} />
       )}
@@ -117,9 +123,7 @@ export const App = () => {
         />
       )}
       {showDislikeModal && (
-        <Modal
-          message={`You won't see that city again... finding your next city now!`}
-        />
+        <Modal message={`You won't see that city again... finding another.`} />
       )}
       {!errorMessage && !isLoading && !showLikeModal && !showDislikeModal && (
         <>
@@ -132,6 +136,8 @@ export const App = () => {
                   cityName={cityName}
                   cityDetails={cityDetails}
                   cityImage={cityImage}
+                  addToFavorites={addToFavorites}
+                  removeFromCities={removeFromCities}
                 />
               )}
             />
@@ -152,16 +158,12 @@ export const App = () => {
 
             <Route
               render={() => (
-                <ErrorComponent errorMessage="Sorry that page doesn't exist, would you like to go home?" />
+                <ErrorComponent errorMessage="Sorry, that page doesn't exist, would you like to go home?" />
               )}
             />
           </Switch>
         </>
       )}
-      <TapBar
-        addToFavorites={addToFavorites}
-        removeFromCities={removeFromCities}
-      />
     </>
   );
 };

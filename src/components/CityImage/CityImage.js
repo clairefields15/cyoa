@@ -12,7 +12,7 @@ export const CityImage = ({ cityName, cityImage }) => {
   return (
     <div className='img-container'>
       <img
-        src={cityImage}
+        src={cityImage.mobile}
         alt={`Beautiful ${cityName}!`}
         onLoad={handleLoaded}
       />
@@ -23,5 +23,5 @@ export const CityImage = ({ cityName, cityImage }) => {
 
 CityImage.propTypes = {
   cityName: PropTypes.string.isRequired,
-  cityImage: PropTypes.string.isRequired
+  cityImage: PropTypes.object.isRequired
 };
