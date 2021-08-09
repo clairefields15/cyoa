@@ -65,10 +65,10 @@ export const App = () => {
 
   useEffect(() => {
     if (cityImage) {
+      window.scrollTo(0, 0);
       setIsLoading(false);
       setShowLikeModal(false);
       setShowDislikeModal(false);
-      window.scrollTo(0, 0);
     }
   }, [cityImage]);
 
@@ -132,6 +132,8 @@ export const App = () => {
                   cityName={cityName}
                   cityDetails={cityDetails}
                   cityImage={cityImage}
+                  addToFavorites={addToFavorites}
+                  removeFromCities={removeFromCities}
                 />
               )}
             />
@@ -158,10 +160,6 @@ export const App = () => {
           </Switch>
         </>
       )}
-      <TapBar
-        addToFavorites={addToFavorites}
-        removeFromCities={removeFromCities}
-      />
     </>
   );
 };
