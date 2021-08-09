@@ -1,7 +1,7 @@
 header {
   display: flex;
   height: 4em;
-  background-color: #5894cd;
+  background-color: #4277a8;
   align-items: center;
   justify-content: space-around;
 }
@@ -16,7 +16,7 @@ nav {
 
 .logo-img {
   height: 2em;
-  width: auto;
+  width: 2em;
 }
 
 h1 {

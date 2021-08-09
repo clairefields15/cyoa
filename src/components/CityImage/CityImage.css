@@ -10,7 +10,7 @@
   display: flex;
   position: absolute;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.7);
   bottom: 1em;
   left: 0;
   padding-left: 1em;
@@ -19,4 +19,22 @@
 
 .show {
   display: block;
+}
+
+.mobile-img {
+  display: block;
+}
+
+.web-img {
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
+  .mobile-img {
+    display: none;
+  }
+
+  .web-img {
+    display: block;
+  }
 }

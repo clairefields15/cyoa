@@ -31,5 +31,7 @@ export const Main = ({
 Main.propTypes = {
   cityName: PropTypes.string.isRequired,
   cityDetails: PropTypes.object.isRequired,
-  cityImage: PropTypes.object.isRequired
+  cityImage: PropTypes.object.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  removeFromCities: PropTypes.func.isRequired
 };

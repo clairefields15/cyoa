@@ -15,6 +15,13 @@ export const CityImage = ({ cityName, cityImage }) => {
         src={cityImage.mobile}
         alt={`Beautiful ${cityName}!`}
         onLoad={handleLoaded}
+        className='mobile-img'
+      />
+      <img
+        src={cityImage.web}
+        alt={`Beautiful ${cityName}!`}
+        onLoad={handleLoaded}
+        className='web-img'
       />
       {isLoaded && <h2 className='city-name'>{cityName}</h2>}
     </div>

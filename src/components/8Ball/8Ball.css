@@ -1,5 +1,6 @@
 .magic-8-ball {
   width: 90%;
+  height: 30em;
   margin-left: auto;
   margin-right: auto;
   padding: 0.5em;
@@ -8,7 +9,12 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin-bottom: 6em;
+  margin-bottom: 2em;
+}
+
+.eight-ball-img {
+  height: auto;
+  width: 28em;
 }
 
 .magic-8-ball button,
@@ -71,6 +77,13 @@
   text-align: center;
 }
 
+@media screen and (min-width: 400px) {
+  .magic-8-ball {
+    margin-bottom: 2em;
+    height: 35em;
+  }
+}
+
 @media screen and (min-width: 600px) {
   .message {
     font-size: 1.5em;
@@ -78,5 +91,9 @@
 
   .magic-8-ball button {
     font-size: 1.5em;
+  }
+  .magic-8-ball {
+    margin-bottom: 6em;
+    height: 38em;
   }
 }
