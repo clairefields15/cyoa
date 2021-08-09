@@ -16,7 +16,10 @@ export const Details = ({ name }) => {
     const fetchDetails = async () => {
       setIsLoading(true);
       setErrorMessage('');
-      let formattedName = name.replace(/\s+/g, '-').toLowerCase();
+      let formattedName = name
+        .replace(/\s+/g, '-')
+        .replace(/[^\w-]/g, '')
+        .toLowerCase();
       let url = `https://api.teleport.org/api/urban_areas/slug:${formattedName}/`;
       try {
         let details = await fetchCity(url);
