@@ -23,7 +23,7 @@ export const fetchScores = async url => {
 export const fetchImages = async url => {
   let response = await fetch(`${url}images/`);
   let data = await checkForErrors(response);
-  return data.photos[0].image.mobile;
+  return data.photos[0].image;
 };
 
 export const fetchMessage = async message => {

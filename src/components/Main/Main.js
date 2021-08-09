@@ -31,5 +31,5 @@ export const Main = ({
 Main.propTypes = {
   cityName: PropTypes.string.isRequired,
   cityDetails: PropTypes.object.isRequired,
-  cityImage: PropTypes.string.isRequired
+  cityImage: PropTypes.object.isRequired
 };

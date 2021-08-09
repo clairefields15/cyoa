@@ -16,7 +16,7 @@ export const App = () => {
   const [allCities, setAllCities] = useState([]);
   const [cityName, setCityName] = useState('');
   const [cityDetails, setCityDetails] = useState({});
-  const [cityImage, setCityImage] = useState('');
+  const [cityImage, setCityImage] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [favorites, setFavorites] = useState([]);
@@ -65,7 +65,7 @@ export const App = () => {
   }, [allCities]);
 
   useEffect(() => {
-    if (cityImage) {
+    if (Object.keys(cityImage).length !== 0) {
       window.scrollTo(0, 0);
       setIsLoading(false);
       setShowLikeModal(false);
