@@ -43,7 +43,7 @@ export const EightBall = ({ cityName }) => {
 
   return (
     <section className='magic-8-ball'>
-      <button onClick={e => handleClick(e)} disabled={error}>
+      <button onClick={e => handleClick(e)} disabled={error} id='ball-btn'>
         Should I move to {cityName}?
       </button>
       {count === 0 && !error && (
