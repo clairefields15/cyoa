@@ -6,7 +6,6 @@ import { Favorites } from '../Favorites/Favorites';
 import { ScrollToTop } from '../../helper-fns/ScrollToTop';
 import { fetchAllCities, fetchCity } from '../../helper-fns/apiCalls';
 import { Header } from '../Header/Header';
-import { TapBar } from '../TapBar/TapBar';
 import { Modal } from '../Modal/Modal';
 import { Details } from '../Details/Details';
 import './App.css';
@@ -76,7 +75,7 @@ export const App = () => {
     const duplicate = favorites.find(favorite => favorite.name === cityName);
 
     if (!duplicate) {
-      await showModalTimeout(setShowLikeModal, 1000);
+      await showModalTimeout(setShowLikeModal, 1500);
       let city = {
         name: cityName,
         details: cityDetails,
@@ -91,7 +90,7 @@ export const App = () => {
   };
 
   const removeFromCities = async () => {
-    await showModalTimeout(setShowDislikeModal, 1000);
+    await showModalTimeout(setShowDislikeModal, 1500);
     setDislikedCities([...dislikedCities, cityName]);
     // set this array in local storage!!
     const newCitiesArray = allCities.filter(city => city.name !== cityName);
@@ -117,9 +116,7 @@ export const App = () => {
         />
       )}
       {showDislikeModal && (
-        <Modal
-          message={`You won't see that city again... finding your next city now!`}
-        />
+        <Modal message={`You won't see that city again... finding another.`} />
       )}
       {!errorMessage && !isLoading && !showLikeModal && !showDislikeModal && (
         <>
@@ -154,7 +151,7 @@ export const App = () => {
 
             <Route
               render={() => (
-                <ErrorComponent errorMessage="Sorry that page doesn't exist, would you like to go home?" />
+                <ErrorComponent errorMessage="Sorry, that page doesn't exist, would you like to go home?" />
               )}
             />
           </Switch>
