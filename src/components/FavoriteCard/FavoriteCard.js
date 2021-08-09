@@ -15,7 +15,11 @@ export const FavoriteCard = ({ favorite }) => {
             {name}
           </div>
 
-          <img src={image} alt={`Beautiful ${name}`} className='city-img-fav' />
+          <img
+            src={image.mobile}
+            alt={`Beautiful ${name}`}
+            className='city-img-fav'
+          />
         </div>
       </div>
     </NavLink>
