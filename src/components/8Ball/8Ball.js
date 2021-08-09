@@ -41,8 +41,6 @@ export const EightBall = ({ cityName }) => {
     }
   }, [message]);
 
-  // add a height to the section stay the same size
-
   return (
     <section className='magic-8-ball'>
       <button onClick={e => handleClick(e)} disabled={error}>
