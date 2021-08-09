@@ -45,7 +45,23 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
-    if (allCities.length) {
+    if (allCities.length > 1) {
+      const fetchDetails = async () => {
+        setErrorMessage('');
+        try {
+          let randomCity =
+            allCities[Math.floor(Math.random() * allCities.length)];
+          let cityDetails = await fetchCity(randomCity.href);
+          setCityDetails(cityDetails[0]);
+          setCityImage(cityDetails[1]);
+          setCityName(randomCity.name);
+        } catch (error) {
+          setErrorMessage(error.message);
+          setIsLoading(false);
+        }
+      };
+      fetchDetails();
+    } else if (allCities.length === 1) {
       const fetchDetails = async () => {
         setErrorMessage('');
         try {

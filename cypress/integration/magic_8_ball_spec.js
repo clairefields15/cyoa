@@ -21,7 +21,7 @@ describe('Magic 8 ball user interaction', () => {
       }
     );
     cy.visit('http://localhost:3000');
-    cy.get('button').click();
+    cy.get('[id=ball-btn]').click();
   });
 
   it('after button click the 8 ball should shake', () => {

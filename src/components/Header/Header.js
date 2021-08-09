@@ -26,8 +26,8 @@ export const Header = () => {
 
       {pathname === '/favorites' && (
         <nav>
-          <NavLink to='/' id='explore-btn' exact className='link'>
-            <button className='nav-button' id='favorites-btn'>
+          <NavLink to='/' exact className='link'>
+            <button className='nav-button' id='explore-btn'>
               <span className='fas fa-home'></span>
               Explore
             </button>
@@ -37,8 +37,8 @@ export const Header = () => {
 
       {pathname !== '/' && pathname !== '/favorites' && (
         <nav>
-          <NavLink to='/' id='explore-btn' exact className='link'>
-            <button className='nav-button' id='favorites-btn'>
+          <NavLink to='/' exact className='link'>
+            <button className='nav-button' id='explore-btn'>
               <span className='fas fa-home'></span>
               Explore
             </button>

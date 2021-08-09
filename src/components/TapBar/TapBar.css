@@ -19,14 +19,24 @@
   font-size: 1em;
 }
 
+.nav-button:hover {
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
 .dislike-bg {
-  background-color: rgb(190, 10, 10);
+  background-color: #be0a0a;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   width: 50%;
   z-index: 1;
+}
+
+.dislike-bg:hover {
+  background-color: #990808;
+  cursor: pointer;
 }
 
 .like-bg {
@@ -39,6 +49,11 @@
   z-index: 1;
 }
 
+.like-bg:hover {
+  background-color: #16760a;
+  cursor: pointer;
+}
+
 .fas {
-  font-size: 2em;
+  font-size: 1.5em;
 }
