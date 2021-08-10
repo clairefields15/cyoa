@@ -30,7 +30,6 @@ export const Details = ({ name }) => {
         setIsLoading(false);
       }
     };
-
     fetchDetails();
   }, [name]);
 

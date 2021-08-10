@@ -20,7 +20,11 @@ export const cleanScores = data => {
     };
   });
 
-  let cleanedSummary = data.summary.replace(/(<([^>]+)>)/gi, '');
+  let cleanedSummary = data.summary
+    .replace(/(<([^>]+)>)/gi, '')
+    .replace(/\r?\n|\r/, '')
+    .replace(/<[^>]+>/g, '')
+    .replace('Teleport', 'CYOA');
 
   return {
     qualityOfLife: qualityOfLife,
