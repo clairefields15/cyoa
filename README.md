@@ -11,7 +11,7 @@ This application was built mobile-first and the best experience will be on mobil
 
 [Check out the deployed site](https://cyoadventure.netlify.app/)
 
-[Project spec](https://frontend.turing.edu/projects/module-3/niche-audience.html)
+This project was built as a final solo project for Mod 3 of the Front End Engineering program at the Turing School of Software and Design. The project spec can be found [here](https://frontend.turing.edu/projects/module-3/niche-audience.html).
 
 ## Overview of the app
 
@@ -32,6 +32,7 @@ From the favorites page, you can view details again (perhaps remind yourself wha
 ![view of the favorites page with several cards, click on one and see details about the city, go back to favorites and remove a city from favorites by clicking a button that looks like a heart breaking](https://user-images.githubusercontent.com/79113236/128798766-c120a4df-40ee-478b-857d-dc62eb543150.gif)
 
 ## Evolution of the Project/Reflections
+Day 1 of this project began with an exploration of free and open APIs to use and a decision about my niche audience. Inspired by several of my adventurous cohort-mates I settled on this niche group of people who might be daring enough to move on a whim. I developed two user personas loosely based on people I knew, then made wireframes and wrote user stories. I am really proud of how robust the user stories on my project board are. Writing out the issues systematically even allowed me to catch a gap that my wireframes had missed- if I was going to have favorites cards, I was also need a details view! After the user stories, I began coding. I challenged myself on this project to use something quite close to an agile workflow. I deployed my app immediately on Netlify and worked through MVP stories one at a time and did not create a PR until that issue was also tested in Cypress, showed no errors/warnings in the console and was fully ready to deploy. This was a change from previous solo and gorup projects where the bulk of the testing was done at the end and I found it to be extremely rewarding!
 
 ## Future Features
 
