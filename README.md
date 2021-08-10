@@ -64,9 +64,9 @@ Since the app is best experienced on mobile, I would also like to turn it into a
 
 Claire Fields
 
-Ashton Huxtable (Code reviewer)
+[Ashton Huxtable](https://github.com/ashton-huxtable) (Code reviewer)
 
-Ashley O'Brien (Code reviewer)
+[Ashley O'Brien](https://github.com/AshleyOh-bit) (Code reviewer)
 
 Scott Ertmer (Project Manager)
 
