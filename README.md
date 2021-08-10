@@ -25,11 +25,11 @@ Then you ask the Magic 8 ball -- should I move there?
 
 Regardless of what the Magic 8 Ball says, you decide whether you like the city or not! Get to clicking!
 
-![user interaction with the app, liking and disliking cities, there is a loading message in between each like or dislike](https://user-images.githubusercontent.com/79113236/128794513-5e7dd776-8c8e-4366-9ccf-fa683dc7e319.gif)
+![user interaction with the app, liking and disliking cities, there is a loading message in between each like or dislike](https://user-images.githubusercontent.com/79113236/128798635-2c213b22-5aed-43fa-8de3-dcf22a77ff4a.gif)
 
 From the favorites page, you can view details again (perhaps remind yourself what you liked about the city in the first place). Don't like it anymore ? Break up with it. We don't care.
 
-![view of the favorites page with several cards, click on one and see details about the city, go back to favorites and remove a city from favorites by clicking a button that looks like a heart breaking](https://user-images.githubusercontent.com/79113236/128794557-d245890e-40a9-4eb2-9200-d04dfab10fa5.gif)
+![view of the favorites page with several cards, click on one and see details about the city, go back to favorites and remove a city from favorites by clicking a button that looks like a heart breaking](https://user-images.githubusercontent.com/79113236/128798766-c120a4df-40ee-478b-857d-dc62eb543150.gif)
 
 ## Evolution of the Project/Reflections
 
