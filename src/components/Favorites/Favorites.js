@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FavoriteCard } from '../FavoriteCard/FavoriteCard';
 import './Favorites.css';
@@ -22,6 +23,11 @@ export const Favorites = ({ favorites, removeFromFavorites }) => {
       {!favorites.length && (
         <p className='your-favs'>
           You don't have any favorites yet, click Explore to get started!
+          <NavLink to='/' exact className='link'>
+            <button className='nav-button blue' id='explore-btn'>
+              <span class='fas fa-search'></span> Explore
+            </button>
+          </NavLink>
         </p>
       )}
       {!!favorites.length && (

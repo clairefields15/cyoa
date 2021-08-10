@@ -42,7 +42,7 @@ describe('Click favorites card to view details', () => {
   it('should be able to navigate back to favorites or home', () => {
     cy.get('.favorites-container').find('a').click();
     cy.get('[id=favorites-btn]').should('exist');
-    cy.get('[id=explore-btn]').should('exist');
+    cy.get('h1').should('exist');
   });
 
   it('should see an error if the fetch fails, 404', () => {
