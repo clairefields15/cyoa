@@ -5,6 +5,8 @@ import { Summary } from '../Summary/Summary';
 import { QualityOfLife } from '../QualityOfLife/QualityOfLife';
 import { fetchCity } from '../../helper-fns/apiCalls';
 import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
+import loading from '../../images/loading.gif';
+import './Details.css';
 
 export const Details = ({ name }) => {
   const [cityDetails, setCityDetails] = useState({});
@@ -42,7 +44,12 @@ export const Details = ({ name }) => {
 
   return (
     <>
-      {!errorMessage && isLoading && <h2>Loading...</h2>}
+      {!errorMessage && isLoading && (
+        <section className='loading-details-container'>
+          <h2>Loading details about {name}...</h2>
+          <img src={loading} alt='loading...' className='loading-dots' />
+        </section>
+      )}
 
       {!!errorMessage && !isLoading && (
         <ErrorComponent errorMessage={errorMessage} />
