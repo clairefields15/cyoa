@@ -17,19 +17,19 @@ This application was built mobile-first and the best experience will be on mobil
 
 When you first visit CYOA you see a random city, a summary, and some quality of life metrics (to help you decide).
 
-![first view](https://user-images.githubusercontent.com/79113236/128793680-c3832709-1dd0-42b1-ba58-88d8c689ccf2.gif)
+![first view of the app, random city image, summary, chart of quality of life metrics, and a magic 8 ball, tap bar with "like and dislike" is visible](https://user-images.githubusercontent.com/79113236/128794421-45715150-43d8-4df8-affc-f28275819608.gif)
 
 Then you ask the Magic 8 ball -- should I move there?
 
-![magic 8 ball](https://user-images.githubusercontent.com/79113236/128793747-12308106-b507-490e-b4be-98f4277c6377.gif)
+![click a button "should I move to this city", a magic 8 ball shakes and then displays a message](https://user-images.githubusercontent.com/79113236/128794467-e94402ca-b896-458a-a6ba-13db4db57afc.gif)
 
 Regardless of what the Magic 8 Ball says, you decide whether you like the city or not! Get to clicking!
 
-![like dislike favorites](https://user-images.githubusercontent.com/79113236/128793814-c7a5808b-c424-439e-a274-64d5b3a8464d.gif)
+![user interaction with the app, liking and disliking cities, there is a loading message in between each like or dislike](https://user-images.githubusercontent.com/79113236/128794513-5e7dd776-8c8e-4366-9ccf-fa683dc7e319.gif)
 
 From the favorites page, you can view details again (perhaps remind yourself what you liked about the city in the first place). Don't like it anymore ? Break up with it. We don't care.
 
-![details and dislike](https://user-images.githubusercontent.com/79113236/128793847-06ffb74a-189d-41a6-954f-2ae5ab5091dd.gif)
+![view of the favorites page with several cards, click on one and see details about the city, go back to favorites and remove a city from favorites by clicking a button that looks like a heart breaking](https://user-images.githubusercontent.com/79113236/128794557-d245890e-40a9-4eb2-9200-d04dfab10fa5.gif)
 
 ## Evolution of the Project/Reflections
 
