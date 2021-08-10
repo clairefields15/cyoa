@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Choose Your Own Adventure (CYOA)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+Welcome, adventurer! Are you ready for a change?
 
-In the project directory, you can run:
+CYOA is an app for adventurous people who are ready to move to a different city but want a little help from the Magic 8 Ball in deciding.
+Despite the magic 8 ball outcome, you must decide whether to like/dislike the city before you see another random choice (think Tinder for cities!). Liked cities are saved to favorites, if it's a "Nope", you won’t see it again.
 
-### `npm start`
+This application was built mobile-first and the best experience will be on mobile. However, it is fully responsive across multiple breakpoints.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[Check out the deployed site](https://cyoadventure.netlify.app/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[Project spec](https://frontend.turing.edu/projects/module-3/niche-audience.html)
 
-### `npm test`
+## Overview of the app
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+When you first visit CYOA you see a random city, a summary, and some quality of life metrics (to help you decide).
 
-### `npm run build`
+![first view](https://user-images.githubusercontent.com/79113236/128793680-c3832709-1dd0-42b1-ba58-88d8c689ccf2.gif)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Then you ask the Magic 8 ball -- should I move there?
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![magic 8 ball](https://user-images.githubusercontent.com/79113236/128793747-12308106-b507-490e-b4be-98f4277c6377.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Regardless of what the Magic 8 Ball says, you decide whether you like the city or not! Get to clicking!
 
-### `npm run eject`
+![like dislike favorites](https://user-images.githubusercontent.com/79113236/128793814-c7a5808b-c424-439e-a274-64d5b3a8464d.gif)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+From the favorites page, you can view details again (perhaps remind yourself what you liked about the city in the first place). Don't like it anymore ? Break up with it. We don't care.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![details and dislike](https://user-images.githubusercontent.com/79113236/128793847-06ffb74a-189d-41a6-954f-2ae5ab5091dd.gif)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Evolution of the Project/Reflections
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Future Features
 
-## Learn More
+In future, I hope to add localStorage to the application so that favorites persist upon refresh and you truly will never see disliked cities again. When I add localStorage, I will also add a button on the favorites page that will allow users to clear their local data and get a fresh start. If users have cycled through all 200-something cities in the API, a message will appear letting them know that there aren't any more options and directing them to the favorites page so they can get that fresh start on their search.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+I would also like to refactor my css to use Styled Components and add lazy loading to improve the UI/UX.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Since the app is best experienced on mobile, I would also like to turn it into a PWA and add swipe left/right functionality to the main page.
 
-### Code Splitting
+## Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Clone down this repo.
+2. cd into the directory.
+3. Then run: `npm install`
+4. Run `npm start`.
+5. Visit http://localhost:3000/ (or whatever URL you are directed to in your terminal)
+6. Enter `control + c` in your terminal to stop the server(s) at any time.
 
-### Analyzing the Bundle Size
+## Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- React
+- React Router
+- PropTypes
+- Chart.js
+- Continuous Deployment with Netlify
+- End to End testing with Cypress
+- Integration with the [Teleport API](https://developers.teleport.org/api/) and [Magic 8 Ball API](https://8ball.delegator.com/)
 
-### Making a Progressive Web App
+## Contributors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Claire Fields
 
-### Advanced Configuration
+Ashton Huxtable (Code reviewer)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Ashley O'Brien (Code reviewer)
 
-### Deployment
+Scott Ertmer (Project Manager)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Kayla Gordon (Project Manager)

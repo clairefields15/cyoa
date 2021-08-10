@@ -10,7 +10,6 @@ export const QualityOfLife = ({ cityDetails }) => {
     if (detail.name === 'Environmental Quality') {
       return 'Environment';
     }
-
     return detail.name;
   });
 

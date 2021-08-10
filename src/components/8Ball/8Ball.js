@@ -16,6 +16,12 @@ export const EightBall = ({ cityName }) => {
     setMessage('');
   }, [cityName]);
 
+  useEffect(() => {
+    if (message) {
+      setShaking(false);
+    }
+  }, [message]);
+
   const handleClick = async e => {
     e.preventDefault();
     setMessage('');
@@ -34,12 +40,6 @@ export const EightBall = ({ cityName }) => {
     setShaking(true);
     return new Promise(resolve => setTimeout(resolve, ms));
   };
-
-  useEffect(() => {
-    if (message) {
-      setShaking(false);
-    }
-  }, [message]);
 
   return (
     <section className='magic-8-ball'>
