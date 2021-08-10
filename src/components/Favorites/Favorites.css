@@ -7,6 +7,13 @@
 }
 
 .your-favs {
-  text-align: center;
   padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blue {
+  margin: 2em;
+  color: #4277a8;
 }
