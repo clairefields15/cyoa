@@ -25,7 +25,17 @@ describe('Navigation, liking and disliking cities', () => {
 
   it('Clicking on explore button changes url and nav buttons', () => {
     cy.visit('http://localhost:3000/favorites');
-    cy.get('a').contains('Explore').click();
+    cy.get('button').contains('Explore').click();
+    cy.url().should('eq', 'http://localhost:3000/');
+    cy.get('a').contains('Favorites');
+    cy.get('[id=like-btn]').should('exist');
+    cy.get('[id=favorites-btn]').should('exist');
+    cy.get('[id=nope-btn]').should('exist');
+  });
+
+  it('Clicking on the logo changes url', () => {
+    cy.visit('http://localhost:3000/favorites');
+    cy.get('h1').click();
     cy.url().should('eq', 'http://localhost:3000/');
     cy.get('a').contains('Favorites');
     cy.get('[id=like-btn]').should('exist');
