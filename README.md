@@ -1,4 +1,5 @@
-# Choose Your Own Adventure (CYOA)
+# Choose Your Own Adventure (CYOA)(https://cyoadventure.netlify.app/)
+
 
 ## Introduction
 
@@ -6,8 +7,6 @@ Welcome, adventurer! Are you ready for a change?
 
 CYOA is an app for adventurous people who are ready to move to a different city but want a little help from the Magic 8 Ball in deciding.
 Despite the magic 8 ball outcome, you must decide whether to like/dislike the city before you see another random choice (think Tinder for cities!). Liked cities are saved to favorites, if it's a "Nope", you won’t see it again.
-
-## [Check out the deployed site](https://cyoadventure.netlify.app/)
 
 This project was built as a final solo project for Mod 3 of the Front End Engineering program at the Turing School of Software and Design. The project spec can be found [here](https://frontend.turing.edu/projects/module-3/niche-audience.html). The application was built mobile-first, however, it is fully responsive across multiple breakpoints. It also gets a Lighthouse score of 100 for accessibility and can be fully enjoyed using a keyboard only. 
 
