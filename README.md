@@ -1,4 +1,4 @@
-# [Choose Your Own Adventure (CYOA)](https://cyoadventure.netlify.app/)
+# 🔗 [Choose Your Own Adventure (CYOA)](https://cyoadventure.netlify.app/)
 
 
 ## Introduction
