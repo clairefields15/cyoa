@@ -19,7 +19,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress": "./node_modules/.bin/cypress open"
+    "cypress": "./node_modules/.bin/cypress open",
+    "cy:run": "cypress run",
+    "start:ci": "serve --no-clipboard --listen ${PORT:-8080}"
   },
   "eslintConfig": {
     "extends": [
