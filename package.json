@@ -44,7 +44,6 @@
   },
   "devDependencies": {
     "cypress": "^8.2.0",
-    "netlify-plugin-cypress": "^2.2.0",
     "prop-types": "^15.7.2"
   }
 }
