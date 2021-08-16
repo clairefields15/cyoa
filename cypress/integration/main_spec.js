@@ -2,7 +2,7 @@ import { fetchAllCities } from '../../src/helper-fns/apiCalls';
 
 describe('Main view', () => {
   it('As a user, I should see a logo when I first visit the site', () => {
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
     cy.get('h1').contains('CYOA');
   });
 
@@ -27,7 +27,7 @@ describe('Main view', () => {
         fixture: 'aarhus_images.json'
       }
     );
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
     cy.get('.img-container').find('img').should('be.visible');
     cy.get('h2').should('contain', 'Aarhus');
   });
@@ -53,7 +53,7 @@ describe('Main view', () => {
         fixture: 'aarhus_images.json'
       }
     );
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
     cy.get('h2').should('contain', 'Oops, 404. Check back later.');
   });
 
@@ -78,7 +78,7 @@ describe('Main view', () => {
         fixture: 'aarhus_images.json'
       }
     );
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
     cy.get('h2').should(
       'contain',
       "So sorry, our servers are down, you'll have to dream another day"
@@ -106,7 +106,7 @@ describe('Main view', () => {
         fixture: 'aarhus_images.json'
       }
     );
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
     cy.get('h2').should('contain', 'Something went wrong');
   });
 
@@ -131,7 +131,7 @@ describe('Main view', () => {
         fixture: 'aarhus_images.json'
       }
     );
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
     cy.get('h2').should('contain', 'Summary');
     cy.get('p').contains(
       'Aarhus, Denmark, is among the top cities with a free business environment. According to our city rankings, this is a good place to live with high ratings in safety, healthcare and environmental quality.'
@@ -159,7 +159,7 @@ describe('Main view', () => {
         fixture: 'aarhus_images.json'
       }
     );
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
     cy.get('h2').should('contain', 'Quality Of Life');
     cy.get('canvas').should('be.visible');
   });
@@ -185,7 +185,7 @@ describe('Main view', () => {
         fixture: 'aarhus_images.json'
       }
     );
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
     cy.get('button').should('contain', 'Should I move to');
   });
 
@@ -210,7 +210,7 @@ describe('Main view', () => {
         fixture: 'aarhus_images.json'
       }
     );
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
     cy.get('.magic-8-ball').find('img').should('be.visible');
     cy.get('.magic-8-ball').find('img').should('not.have.class');
   });

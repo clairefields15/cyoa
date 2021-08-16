@@ -20,7 +20,7 @@ describe('Magic 8 ball user interaction', () => {
         fixture: 'aarhus_images.json'
       }
     );
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
     cy.get('[id=ball-btn]').click();
   });
 

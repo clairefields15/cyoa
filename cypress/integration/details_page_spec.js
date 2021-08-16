@@ -4,7 +4,7 @@ describe('Click favorites card to view details', () => {
       statusCode: 200,
       fixture: 'multipleCities.json'
     });
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
     cy.get('[id=like-btn]').click();
     cy.contains('added to favorites... finding your next city now!');
     cy.intercept('GET', 'https://api.teleport.org/api/urban_areas/', {
@@ -63,7 +63,7 @@ describe('Click favorites card to view details', () => {
         fixture: 'aarhus_images.json'
       }
     );
-    cy.visit('http://localhost:3000/favorites/Aarhus');
+    cy.visit('/favorites/Aarhus');
     cy.contains('Oops, 404. Check back later.');
   });
 
@@ -85,7 +85,7 @@ describe('Click favorites card to view details', () => {
         fixture: 'aarhus_images.json'
       }
     );
-    cy.visit('http://localhost:3000/favorites/Aarhus');
+    cy.visit('/favorites/Aarhus');
     cy.contains(
       "So sorry, our servers are down, you'll have to dream another day"
     );
@@ -109,7 +109,7 @@ describe('Click favorites card to view details', () => {
         fixture: 'aarhus_images.json'
       }
     );
-    cy.visit('http://localhost:3000/favorites/Aarhus');
+    cy.visit('/favorites/Aarhus');
     cy.contains('Something went wrong');
   });
 

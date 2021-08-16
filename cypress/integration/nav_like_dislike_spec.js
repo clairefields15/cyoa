@@ -4,7 +4,7 @@ describe('Navigation, liking and disliking cities', () => {
       statusCode: 200,
       fixture: 'multipleCities.json'
     });
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
   });
 
   it('Should have navigation buttons', () => {
@@ -24,7 +24,7 @@ describe('Navigation, liking and disliking cities', () => {
   });
 
   it('Clicking on explore button changes url and nav buttons', () => {
-    cy.visit('http://localhost:3000/favorites');
+    cy.visit('/favorites');
     cy.get('button').contains('Explore').click();
     cy.url().should('eq', 'http://localhost:3000/');
     cy.get('a').contains('Favorites');
@@ -34,7 +34,7 @@ describe('Navigation, liking and disliking cities', () => {
   });
 
   it('Clicking on the logo changes url', () => {
-    cy.visit('http://localhost:3000/favorites');
+    cy.visit('/favorites');
     cy.get('h1').click();
     cy.url().should('eq', 'http://localhost:3000/');
     cy.get('a').contains('Favorites');
