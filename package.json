@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "cypress": "./node_modules/.bin/cypress open",
     "cy:run": "cypress run --record --key 5338d7b5-8657-4612-8b0c-490cb93b29ec",
-    "start:ci": "serve --no-clipboard --listen ${PORT:-8080}"
+    "start:ci": "serve --no-clipboard --listen ${PORT:-3000}"
   },
   "eslintConfig": {
     "extends": [
