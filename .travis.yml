@@ -6,6 +6,10 @@ node_js:
 
 # if using Ubuntu 16 need this library
 # https://github.com/cypress-io/cypress-documentation/pull/1647
+
+notifications:
+  email: false
+
 addons:
   apt:
     packages:
@@ -22,6 +26,8 @@ cache:
     - npm run cy:verify
 
 script:
+  #start server
+  - npm start
   # start server in the background
   - npm run start:ci &
   # run all Cypress tests and record on the dashboard
