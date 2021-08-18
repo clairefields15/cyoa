@@ -6,3 +6,6 @@ workflows:
     jobs:
       - cypress/run:
           start: npm start
+      - run:
+        name: Deploy to Netlify
+        command: curl -X POST -d {} ${hook}
