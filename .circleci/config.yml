@@ -8,4 +8,4 @@ workflows:
           start: npm start
       - run:
         name: Deploy to Netlify
-        command: curl -X POST -d {} ${hook}
+        command: curl -X POST -d '{}' ${hook}
