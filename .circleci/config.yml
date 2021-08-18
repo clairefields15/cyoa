@@ -10,4 +10,4 @@ workflows:
       # "run" is the name of the job defined in Cypress orb
       - cypress/run:
         start: npm start
-        wait-on: 'http://localhost:3000'
+        wait-on: 'http-get://localhost:3000'
