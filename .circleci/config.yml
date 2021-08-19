@@ -7,6 +7,4 @@ workflows:
       - cypress/run:
         start: npm start
       - deploy:
-        requires:
-          - cypress/run
         run: curl -X POST -d '{}' ${hook}
