@@ -2,9 +2,11 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.28.0
 workflows:
-  example-workflow:
+  test-and-deploy:
     jobs:
       - cypress/run:
         start: npm start
       - deploy:
-        command: curl -X POST -d '{}' ${hook}
+        requires:
+          - cypress/run
+        run: curl -X POST -d '{}' ${hook}
