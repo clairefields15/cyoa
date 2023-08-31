@@ -32,11 +32,3 @@ export const cleanScores = data => {
     totalScore: data['teleport_city_score'].toFixed(2)
   };
 };
-
-export const cleanMessage = data => {
-  let message = data.magic.answer.toUpperCase();
-  if (message === 'CONCENTRATE AND ASK AGAIN') {
-    return 'FOCUS AND TRY AGAIN';
-  }
-  return message;
-};
